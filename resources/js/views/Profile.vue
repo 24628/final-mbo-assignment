@@ -68,10 +68,10 @@
                             </p>
                         </div>
                         <div v-if="edit">
-                            <p class="profile-company">
+                            <label class="profile-company" for="company">
                                 Bedrijf
-                            </p>
-                            <input v-model="company" type="text" class="profile-name-edit">
+                            </label>
+                            <input v-model="company" type="text" id="company" class="profile-name-edit">
                         </div>
                         <hr v-if="!edit" class="profile-line-phone">
                         <input
@@ -274,6 +274,7 @@ export default {
             this.linkedin = data.profile.linkedin;
             this.phonenumber = data.profile.phonenumber;
             this.contact_email = data.profile.contact_email;
+            this.company = data.profile.company;
         } else {
             this.profileExist = false;
         }
@@ -348,7 +349,7 @@ export default {
         },
         async editProfile () {
             let data = {};
-            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email'];
+            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company'];
             const roleData = {
                 id: this.role,
                 user_id: this.user_id
@@ -367,6 +368,7 @@ export default {
             if (this.role) {
                 await API.post(roleData, '/api/selectable-role-edit', true);
             }
+            await API.post({name: this.name}, '/api/user/name/' + this.user_id, true);
             this.edit = false;
         }
     }

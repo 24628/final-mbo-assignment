@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid', 'verified']], func
     Route::get('/refresh-token','UserController@updatetoken');
     Route::post('/search/profile','UserController@search');
     Route::get('/permissions', 'UserController@permissions')->name('user.permissions');
+    Route::patch('/user/name/{user}', 'UserController@update')->name('user.name');
 
     Route::get('event', 'EventController@index')->name('event');
     Route::get('event/{event}', 'EventController@show')->name('event.show');
