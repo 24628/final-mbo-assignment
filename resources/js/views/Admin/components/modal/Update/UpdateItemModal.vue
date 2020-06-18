@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update spreker
+                            Aanpassen spreker
                         </p>
 
                         <button
@@ -49,7 +49,7 @@
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="spreker naam"
+                                    placeholder="Spreker naam"
                                 >
                             </div>
 
@@ -57,14 +57,14 @@
                                 <label
                                     class="form-label"
                                     for="description"
-                                >Omschrijving</label>
+                                >Spreker omschrijving</label>
                                 <textarea
                                     id="description"
                                     v-model="description"
                                     class="form-text-input"
                                     type="text"
                                     name="description"
-                                    placeholder="spreker omschrijving"
+                                    placeholder="Spreker omschrijving"
                                 />
                             </div>
 
@@ -104,7 +104,7 @@
                                 <label
                                     class="form-label"
                                     for="active"
-                                >Active</label>
+                                >Zet de spreker op actief</label>
                                 <input
                                     id="active"
                                     v-model="active"
@@ -133,7 +133,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

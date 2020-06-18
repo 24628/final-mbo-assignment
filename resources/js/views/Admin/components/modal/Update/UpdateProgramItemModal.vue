@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update programma item
+                            aanpassen programma onderdeel
                         </p>
 
                         <button
@@ -42,14 +42,14 @@
                                 <label
                                     class="form-label"
                                     for="name"
-                                >Naam</label>
+                                >Programma onderdeel naam</label>
                                 <input
                                     id="name"
                                     v-model="name"
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="programma item naam"
+                                    placeholder="Programma onderdeel naam"
                                 >
                             </div>
 
@@ -57,14 +57,14 @@
                                 <label
                                     class="form-label"
                                     for="description"
-                                >Omschrijving</label>
+                                >Programma onderdeel omschrijving</label>
                                 <textarea
                                     id="description"
                                     v-model="description"
                                     class="form-text-input"
                                     type="text"
                                     name="description"
-                                    placeholder="programma item omschrijving"
+                                    placeholder="Programma onderdeel omschrijving"
                                 />
                             </div>
 
@@ -77,7 +77,7 @@
                                 <label
                                     class="form-label"
                                     for="active"
-                                >Active</label>
+                                >Zet het programma onderdeel op actief</label>
                                 <input
                                     id="active"
                                     v-model="active"
@@ -105,7 +105,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

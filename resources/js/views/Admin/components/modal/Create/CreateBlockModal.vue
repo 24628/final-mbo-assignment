@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Creëer blok
+                            Creëer ronde
                         </p>
 
                         <button
@@ -65,7 +65,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

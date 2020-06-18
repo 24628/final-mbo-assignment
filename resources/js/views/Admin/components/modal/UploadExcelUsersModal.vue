@@ -42,7 +42,7 @@
                             class="button-create-item map-settings-container-items"
                             @click="parseFileInPut"
                         >
-                            upload
+                            Upload
                         </button>
                     </slot>
                 </section>
@@ -54,7 +54,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

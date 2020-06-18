@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update rol
+                            Aanpassen rol
                         </p>
 
                         <button
@@ -93,7 +93,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>
