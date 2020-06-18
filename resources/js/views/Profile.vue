@@ -79,14 +79,6 @@
                             >
                         </div>
                         <hr v-if="!edit" class="profile-line-phone">
-                        <button
-                            v-else-if="!edit && cv"
-                            class="download-cv"
-                            type="button"
-                            onclick="console.log('hoi')"
-                        >
-                            Download CV
-                        </button>
                         <input
                             v-if="edit"
                             ref="cv"
@@ -95,7 +87,7 @@
                             class="profile-cv-input"
                             @change="CvChangeEventHandler"
                         >
-                        <button v-if="!edit && !!cvString && cvString.length" @click.prevent="showCV">
+                        <button v-if="!edit && !!cvString && cvString.length" class="download-cv" @click.prevent="showCV">
                             bekijk CV
                         </button>
                     </div>
