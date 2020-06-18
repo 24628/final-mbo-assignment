@@ -108,3 +108,17 @@
 //    }
 //  }
 //}
+
+.dropdown-options {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.dropdown-option {
+    width: 33%;
+}
+
+.dropdown-option * {
+    color: whitesmoke;
+}
