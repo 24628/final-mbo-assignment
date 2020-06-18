@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserNameRequest;
 use App\Permissions;
 use App\Role;
 use App\User;
@@ -92,9 +93,29 @@ class UserController extends Controller
         return response()->json(['message' => "Role Edited"], 200);
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function isLoggedIn(){
 
         return response()->json(Auth::check(), 200);
 
+    }
+
+    /**
+     * @param UpdateUserNameRequest $request
+     * @param User $user
+     * @return JsonResponse
+     */
+    public function update(UpdateUserNameRequest $request, User $user){
+
+        if(Auth::id() !== $user->id){
+            abort(403);
+        }
+
+        $user = User::findOrFail($user->id);
+        $user->update(array('name' => $request->name));
+
+        return response()->json(['message' => 'User updated successfully'], 200);
     }
 }

@@ -376,6 +376,7 @@ export default {
             if (this.role) {
                 await API.post(roleData, '/api/selectable-role-edit', true);
             }
+            await API.post({name: this.name}, '/api/user/name/' + this.user_id, true);
             this.edit = false;
         }
     }
