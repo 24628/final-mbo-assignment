@@ -36,6 +36,7 @@ class OverviewController extends Controller
             ->with('congress')
             ->with('congress.block')
             ->with('congress.block.items')
+            ->with('map')
             ->first();
 
         return response()->json($s, 200);
