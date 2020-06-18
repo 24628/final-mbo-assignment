@@ -369,7 +369,7 @@ export default {
             API.delete('/api/congress/' + id);
             await this.forceUpdate();
         },
-        async updateCongress(id) {
+        async updateCongress (id) {
             this.updateCongressId = id;
             await this.setModalState('updateCongressModal');
         },

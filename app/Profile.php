@@ -20,6 +20,7 @@ class Profile extends Model
         'linkedin',
         'contact_email',
         'twitter',
+        'company',
         'cv',
     ];
 

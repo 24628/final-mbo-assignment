@@ -35,7 +35,7 @@
                                         {{ formatDate(item.settings) }}
                                     </p>
                                     <p class="home-location column-desktop-6 column-tablet-6 column-mobile-12">
-                                        {{item.settings.location}}
+                                        {{ item.settings.location }}
                                     </p>
                                 </div>
                             </div>
@@ -63,16 +63,16 @@ export default ({
     },
     methods: {
         formatDate (settings) {
-            let dateStart = new Date(settings.date_start).getTime();
-            let dateEnd = new Date(settings.date_end).getTime();
-            const months = ['Jan','Feb', 'Mar', 'Apr', 'Mei','Jun','Jul','Aug','Sep', 'Oct', 'Nov','Dec'];
-            if (dateStart + 1000*60*60*24 > dateEnd){
+            const dateStart = new Date(settings.date_start).getTime();
+            const dateEnd = new Date(settings.date_end).getTime();
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            if (dateStart + 1000 * 60 * 60 * 24 > dateEnd) {
                 return stringifyDate(dateStart);
-            }  else {
-                return stringifyDate(dateStart) + "/"  + stringifyDate(dateEnd)
+            } else {
+                return stringifyDate(dateStart) + '/' + stringifyDate(dateEnd);
             }
 
-            function stringifyDate(date) {
+            function stringifyDate (date) {
                 date = new Date(date);
                 const formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
                 return formattedDate;
