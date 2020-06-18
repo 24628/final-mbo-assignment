@@ -120,5 +120,8 @@
 }
 
 .dropdown-option * {
-    color: whitesmoke;
+    color: $basic-gray;
+}
+.dropdown-current{
+    color: $basic-gray;
 }
