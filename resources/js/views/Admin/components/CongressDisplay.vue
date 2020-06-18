@@ -157,6 +157,7 @@ export default {
         UpdateItemModal,
         Item
     },
+    // eslint-disable-next-line vue/prop-name-casing
     props: ['congress', 'event-title'],
     data () {
         return {
@@ -216,8 +217,12 @@ export default {
             await this.forceUpdate();
         },
         async forceUpdate () {
-            const res = await API.get('/api/admin/congress/' + this.congress.id);
-            this.congress = res.data;
+            const res = JSON.parse(JSON.stringify(await API.get('/api/admin/congress/' + this.congress.id)));
+            const congressData = res.data;
+            for (let i = 0; i < congressData.block.length; i++) {
+                congressData.block[i].open = false;
+            }
+            this.congressData = congressData;
         }
     }
 };
