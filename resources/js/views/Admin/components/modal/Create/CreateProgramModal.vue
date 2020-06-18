@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Creëer Programma
+                            Creëer programma
                         </p>
 
                         <button
@@ -57,7 +57,7 @@
                                 <label
                                     class="form-label"
                                     for="description"
-                                >Omschrijving</label>
+                                >Programma omschrijving</label>
                                 <textarea
                                     id="description"
                                     v-model="description"
@@ -72,7 +72,7 @@
                                 <label
                                     class="form-label"
                                     for="active"
-                                >Active</label>
+                                >Zet het programma op actief</label>
                                 <input
                                     id="active"
                                     v-model="active"
@@ -101,7 +101,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

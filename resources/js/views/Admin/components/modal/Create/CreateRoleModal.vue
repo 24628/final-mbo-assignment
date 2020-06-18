@@ -42,7 +42,7 @@
                                 <label
                                     class="form-label"
                                     for="create_role_name"
-                                >Rol Naam</label>
+                                >Rol naam</label>
                                 <input
                                     id="create_role_name"
                                     v-model="role_name"
@@ -93,7 +93,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

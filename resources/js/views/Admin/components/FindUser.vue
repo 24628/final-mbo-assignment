@@ -31,7 +31,7 @@
                         Naam
                     </div>
                     <div class="admin-find-user-table-cell">
-                        Email
+                        E-mail
                     </div>
                     <div class="admin-find-user-table-cell">
                         Rol

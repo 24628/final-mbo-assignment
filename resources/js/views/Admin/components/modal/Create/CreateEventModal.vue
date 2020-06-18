@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Creëer Evenement
+                            Creëer evenement
                         </p>
 
                         <button
@@ -42,14 +42,14 @@
                                 <label
                                     class="form-label"
                                     for="name"
-                                >Event naam</label>
+                                >Evenement naam</label>
                                 <input
                                     id="name"
                                     v-model="name"
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="Event naam"
+                                    placeholder="Evenement naam"
                                 >
                             </div>
 
@@ -64,7 +64,7 @@
                                     class="form-text-input"
                                     type="text"
                                     name="description"
-                                    placeholder="Event omschrijving"
+                                    placeholder="Evenement omschrijving"
                                 />
                             </div>
 
@@ -97,7 +97,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

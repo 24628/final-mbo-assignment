@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Block
+                            Gebruiker aanpassen
                         </p>
 
                         <button
@@ -42,14 +42,14 @@
                                 <label
                                     class="form-label"
                                     for="name"
-                                >Name</label>
+                                >Naam</label>
                                 <input
                                     id="name"
                                     v-model="name"
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="Name"
+                                    placeholder="Naam"
                                 >
                             </div>
 
@@ -64,7 +64,7 @@
                                     class="form-text-input"
                                     type="text"
                                     name="email"
-                                    placeholder="Email"
+                                    placeholder="E mail"
                                 >
                             </div>
 
@@ -77,7 +77,7 @@
                             <div class="form-line admin-from-submit">
                                 <input
                                     type="submit"
-                                    value="Submit"
+                                    value="Indienen"
                                     class="submit-btn admin-form-submit"
                                 >
                             </div>
@@ -92,7 +92,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

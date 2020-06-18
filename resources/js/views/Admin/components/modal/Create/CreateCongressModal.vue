@@ -72,7 +72,7 @@
                                 <label
                                     class="form-label"
                                     for="active"
-                                >Active</label>
+                                >Zet het congres op actief</label>
                                 <input
                                     id="active"
                                     v-model="active"
@@ -101,7 +101,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

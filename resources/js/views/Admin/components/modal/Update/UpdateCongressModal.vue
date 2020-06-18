@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Congres
+                            Aanpassen congres
                         </p>
 
                         <button
@@ -49,7 +49,7 @@
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="congres naam"
+                                    placeholder="Congres naam"
                                 >
                             </div>
 
@@ -57,14 +57,14 @@
                                 <label
                                     class="form-label"
                                     for="description"
-                                >omschrijving</label>
+                                >Congres omschrijving</label>
                                 <textarea
                                     id="description"
                                     v-model="description"
                                     class="form-text-input"
                                     type="text"
                                     name="description"
-                                    placeholder="congres omschrijving"
+                                    placeholder="Congres omschrijving"
                                 />
                             </div>
 
@@ -72,7 +72,7 @@
                                 <label
                                     class="form-label"
                                     for="active"
-                                >Active</label>
+                                >Zet het congres op actief</label>
                                 <input
                                     id="active"
                                     v-model="active"
@@ -101,7 +101,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

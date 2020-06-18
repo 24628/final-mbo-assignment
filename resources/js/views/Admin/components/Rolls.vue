@@ -24,14 +24,14 @@
                             >
                             <div
                                 class="admin-roll-action-icon-holder"
-                                title="update this roll"
+                                title="Aanpassen van de rol"
                                 @click="updateRoll(roll.id)"
                             >
                                 <i class="fas fa-pencil admin-roll-action-icon" />
                             </div>
                             <div
                                 class="admin-roll-action-icon-holder"
-                                title="delete this roll"
+                                title="Verwijder de rol"
                                 @click="deleteRoll(roll.id)"
                             >
                                 <i class="fas fa-trash admin-roll-action-icon" />

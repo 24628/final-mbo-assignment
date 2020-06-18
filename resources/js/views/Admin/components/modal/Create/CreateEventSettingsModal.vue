@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Event Settings
+                            Maak de evenement instellingen
                         </p>
 
                         <button
@@ -51,14 +51,14 @@
                                 <label
                                     class="form-label"
                                     for="location"
-                                >location</label>
+                                >Evenement locatie</label>
                                 <input
                                     id="location"
                                     v-model="location"
                                     class="form-text-input"
                                     type="text"
                                     name="location"
-                                    placeholder="Event location"
+                                    placeholder="Evenement locatie"
                                 >
                             </div>
 
@@ -66,14 +66,14 @@
                                 <label
                                     class="form-label"
                                     for="max_registrations"
-                                >max registrations</label>
+                                >Maximale registraties</label>
                                 <input
                                     id="max_registrations"
                                     v-model="max_registrations"
                                     class="form-text-input"
                                     type="text"
                                     name="max_registrations"
-                                    placeholder="Event name"
+                                    placeholder="200"
                                 >
                             </div>
 
@@ -81,14 +81,14 @@
                                 <label
                                     class="form-label"
                                     for="visible_registrations"
-                                >visible registrations</label>
+                                >Waneer zijn de registraties zichtbaar</label>
                                 <input
                                     id="visible_registrations"
                                     v-model="visible_registrations"
                                     class="form-text-input"
                                     type="text"
                                     name="visible_registrations"
-                                    placeholder="Event name"
+                                    placeholder="70"
                                 >
                             </div>
 
@@ -96,14 +96,14 @@
                                 <label
                                     class="form-label"
                                     for="color"
-                                >Color</label>
+                                >Kleur</label>
                                 <input
                                     id="color"
                                     v-model="color"
                                     class="form-color-input"
                                     type="color"
                                     name="color"
-                                    placeholder="Event name"
+                                    placeholder="kleur"
                                 >
                             </div>
 
@@ -111,21 +111,20 @@
                                 <label
                                     class="form-label"
                                     for="light_theme"
-                                >Light themed</label>
+                                >Lichte thema</label>
                                 <input
                                     id="light_theme"
                                     v-model="light_theme"
                                     class="form-text-input"
                                     type="checkbox"
                                     name="light_theme"
-                                    placeholder="Event name"
                                 >
                             </div>
 
                             <div class="form-line admin-from-submit">
                                 <input
                                     type="submit"
-                                    value="Submit"
+                                    value="Indienen"
                                     class="submit-btn admin-form-submit"
                                 >
                             </div>
@@ -140,7 +139,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Sluit
+                            Sluiten
                         </button>
                     </slot>
                 </footer>

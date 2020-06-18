@@ -6,7 +6,7 @@
             class="admin-item-title-input"
             type="text"
             name="name"
-            placeholder="Event name"
+            placeholder="Naam"
         >
 
         <div class="form-line">
@@ -16,7 +16,7 @@
                 class="admin-item-text-editor"
                 type="text"
                 name="description"
-                placeholder="Event name"
+                placeholder="Omschrijving"
             />
         </div>
     </div>
