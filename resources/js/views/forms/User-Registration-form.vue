@@ -17,28 +17,6 @@
                     <loading />
                 </div>
 
-                <div
-                    v-if="errors.length"
-                    class="form-errors"
-                >
-                    <p>Fout:</p>
-                    <ul>
-                        <li
-                            v-for="error in errors"
-                            :key="error"
-                        >
-                            {{ error }}
-                        </li>
-                    </ul>
-                </div>
-
-                <div
-                    v-if="!!message"
-                    class="form-message"
-                >
-                    {{ message }}
-                </div>
-
                 <div class="form-line">
                     <label
                         class="form-label"
@@ -108,7 +86,7 @@
                     </select>
                 </div>
                 <div class="form-line">
-                    <input v-model="terms" type="checkbox">
+                    <input id="terms" v-model="terms" type="checkbox">
                     <label class="form-label" for="terms">Algemene voorwaarden</label>
                 </div>
                 <div class="form-line form-line-hasbutton">
@@ -126,6 +104,7 @@
 <script>
 import axios from 'axios';
 import loading from '@/js/components/loading';
+import API from '../../Api';
 
 export default {
     name: 'Registration',
@@ -137,7 +116,6 @@ export default {
             password_confirmation: null,
             role: null,
             terms: false,
-            errors: [],
             isLoading: false,
             roles: []
         };
@@ -146,22 +124,25 @@ export default {
     methods: {
         async requestRegister () {
             this.isLoading = true;
-            axios.post('/api/register',
-                {
-                    name: this.name,
-                    email: this.email,
-                    password: this.password,
-                    password_confirmation: this.password_confirmation,
-                    role_id: this.role,
-                    terms: this.terms
-                }).then(result => {
-                alert(result.data.message);
-                this.isLoading = false;
-                this.message = result.data.message;
-                this.$router.push('/');
-            }, error => {
-                this.errors.push(error);
-            });
+            const data = {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation,
+                role_id: this.role,
+                terms: this.terms
+            };
+
+            let response;
+            try {
+                response = await axios.post('/api/register', data);
+            } catch (e) {
+                await API.errorCheck(e);
+            }
+            localStorage.setItem('user', JSON.stringify(response.data));
+            location.reload(true);
+            this.$emit('loggedIn', response.data);
+            window.location.href = window.location.origin;
         }
     },
     mounted () {

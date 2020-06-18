@@ -22,6 +22,13 @@ Vue.use(user);
 
 Route.beforeEach((to, from, next) => {
     const loginData = JSON.parse(localStorage.getItem('user'));
+    console.log(loginData, 'llgoaerawe');
+    console.log({
+        api_token: 'at3VPn97eE7ELTgehaC8Gzhd2747ITv5H3XHsuSrgcEhaBUcvTkl8zLt2vAFjcD3lNQFOxdbNeGzr0C3HCxYKE5W2MKqltAAtKRKkqUpyMRASKEgge0qBASn',
+        email: 'merlaweaw@ewaeaw.com',
+        id: 11,
+        name: 'Merlijn Busch'
+    });
     if (loginData !== null) {
         user.data = loginData;
         Api.setToken(loginData.api_token);

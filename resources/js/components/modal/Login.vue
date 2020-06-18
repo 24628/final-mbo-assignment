@@ -81,10 +81,6 @@ export default {
                 } else {
                     API.generateHtml(response.data.message);
                 }
-            }).catch((e) => {
-                if (e.response.status === 403) {
-                    this.$emit('openAccountVerification');
-                }
             });
             e.preventDefault();
         }

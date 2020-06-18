@@ -76,40 +76,11 @@ class User extends Authenticatable
     }
 
     /**
-     * @param $email
-     * @return string
-     */
-    public function generateVerificationToken($email)
-    {
-        $token = Str::random(120);
-        $q = DB::table('verify_token')->where('email', $email)->first();
-        if($q == NULL){
-             DB::table('verify_token')->insert([
-            'email' => $email,
-            'token' => $token,
-            'date' => Carbon::now()
-            ]);
-        }else{
-            DB::table('verify_token')->where('email', $email)->update(['token' => $token, 'date' => Carbon::now()]);
-        }
-
-        return $token;
-    }
-
-    /**
      * send password reset notification
      * @param string $token
      */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
-    }
-
-    /**
-     * Send new email Verification
-     */
-    public function sendApiEmailVerificationNotification()
-    {
-        $this->notify(new VerifyApiEmail);
     }
 }

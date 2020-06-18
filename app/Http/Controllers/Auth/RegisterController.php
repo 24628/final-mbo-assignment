@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Rules\RoleSelectableValidator;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -11,8 +12,6 @@ use App\Rules\TermsValidator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
-use VerifiesEmails;
 
 class RegisterController extends Controller
 {
@@ -80,12 +79,16 @@ class RegisterController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $user
+     * @return JsonResponse
+     */
     protected function registered(Request $request, $user)
     {
-        $user->sendApiEmailVerificationNotification();
-        return response()->json(['message' => 'Bedankt voor het aanmaken van een account, er is een activatielink naar uw e-mailadres gestuurd. Activeer uw account om u aan te melden voor evenementen.'], 201);
+        $user->generateToken();
+
+        return response()->json($user, 200);
     }
-
-
 
 }
