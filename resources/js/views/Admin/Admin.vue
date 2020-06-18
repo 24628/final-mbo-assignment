@@ -129,6 +129,7 @@
                                     >
                                         <div
                                             class="admin-sidebar-program-action-update"
+                                            @click="updateCongress(cong.id)"
                                         >
                                             <i class="fas fa-pencil" />
                                         </div>
@@ -247,6 +248,12 @@
             :id="updateSettingsId"
             @close="setModalState(`updateEventSettingsModal`)"
         />
+
+        <update-congress-modal
+            v-show="updateCongressModal"
+            :id="updateCongressId"
+            @close="setModalState(`updateCongressModal`)"
+        />
     </div>
 </template>
 
@@ -264,6 +271,7 @@ import CongressDisplay from './components/CongressDisplay';
 import ProgramDisplay from './components/ProgramDisplay';
 import UpdateEventSettingsModal from './components/modal/Update/UpdateEventSettingsModal';
 import UpdateProgramModal from './components/modal/Update/UpdateProgramModal';
+import UpdateCongressModal from './components/modal/Update/UpdateCongressModal';
 
 export default {
     name: 'Admin',
@@ -273,6 +281,7 @@ export default {
             updateEventId: null,
             events: [],
             selectedEventId: null,
+            updateCongressId: null,
             currentEvent: [],
             display: null,
             createEventModal: false,
@@ -283,6 +292,7 @@ export default {
             createEventSettingsModal: false,
             createCongressModal: false,
             updateProgramModal: false,
+            updateCongressModal: false,
             updateProgramId: null,
             settingsId: null,
             updateSettingsId: null,
@@ -302,7 +312,8 @@ export default {
         CongressDisplay,
         ProgramDisplay,
         UpdateEventSettingsModal,
-        UpdateProgramModal
+        UpdateProgramModal,
+        UpdateCongressModal
     },
     methods: {
         async setSelectedEventId (id) {
@@ -335,7 +346,7 @@ export default {
                 }
                 if (_this.selectedEventId) await _this.setSelectedEventId(_this.selectedEventId);
                 _this.events = events;
-            }, 1000)
+            }, 1000);
         },
         async deleteEvent (block) {
             block.open = !block.open;
@@ -357,6 +368,10 @@ export default {
         async deleteCongress (id) {
             API.delete('/api/congress/' + id);
             await this.forceUpdate();
+        },
+        async updateCongress(id) {
+            this.updateCongressId = id;
+            await this.setModalState('updateCongressModal');
         },
         async updateEvent (block) {
             block.open = !block.open;

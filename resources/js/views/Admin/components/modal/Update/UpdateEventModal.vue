@@ -133,7 +133,7 @@ export default {
                 image: this.image
             };
 
-            API.post(data, '/api/event');
+            API.post(data, '/api/event/' + this.id, true);
 
             this.close();
 

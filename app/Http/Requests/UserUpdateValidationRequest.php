@@ -27,7 +27,7 @@ class UserUpdateValidationRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'role_id' => ['required', 'int', new RoleSelectableValidator]
+            'role_id' => ['required', 'int']
         ];
     }
 }

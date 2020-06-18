@@ -27,7 +27,6 @@ class ProgramItemUpdateValidationRequest extends FormRequest
         return [
             'name' => ['required', 'max:255'],
             'description' => ['required'],
-            'program_id' => ['required', new ProgramExistValidator],
             'date' => ['date'],
             'active' => ['required', 'boolean'],
         ];
