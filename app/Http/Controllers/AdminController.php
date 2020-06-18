@@ -16,8 +16,10 @@ use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class AdminController extends Controller
 {
@@ -88,19 +90,23 @@ class AdminController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        $error = new stdClass();
+        $error->role = null;
         foreach ($data["data"] as $obj){
 
             $role = Role::query()->where('role_name', $obj["role"])->first();
 
             if($role == null) {
-                return response()->json('Role not found', 200);
+                $error->role = 'De rol bestaat niet, de rol: ' . $obj["role"];
+                return response()->json($error, 422);
             }
 
             $user = new User;
-            $user->name = $obj->name;
-            $user->email = $obj->email;
-            $user->password = $obj->password;
+            $user->name = $obj['name'];
+            $user->email = $obj['email'];
+            $user->password = Hash::make($obj['password']);
             $user->role_id = $role->id;
+            $user->save();
         }
 
         return response()->json(['message' => 'Successfully uploaded the excel'], 200);
