@@ -166,6 +166,18 @@
                                         Nieuw congres
                                     </div>
                                 </div>
+
+                                <div class="admin-create-program-sidebar">
+                                    <div
+                                        class="admin-sidebar-program-create-button"
+                                        @click="
+                                            goToMap(event.id)
+                                        "
+                                    >
+                                        <i class="fas fa-plus-circle" />
+                                        Plattegrond
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -387,6 +399,9 @@ export default {
                 this.updateSettingsId = event.settings.id;
                 this.setModalState('updateEventSettingsModal');
             }
+        },
+        goToMap (id) {
+            window.location.href = window.location.origin + '/form/map/' + id;
         },
         checkEmails () {
             API.get('/api/notify');

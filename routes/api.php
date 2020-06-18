@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid', 'verified']], func
     Route::delete('item/{item}', 'ItemController@destroy')->name('item.destroy');
 
     Route::get('map', 'MapController@index')->name('map');
-    Route::get('map/{map}', 'MapController@show')->name('map.show');
+    Route::get('map/{id}', 'MapController@show')->name('map.show');
     Route::post('map', 'MapController@store')->name('map.store');
     Route::patch('map/{map}', 'MapController@update')->name('map.update');
     Route::delete('map/{map}', 'MapController@destroy')->name('map.destroy');

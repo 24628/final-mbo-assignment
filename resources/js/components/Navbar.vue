@@ -7,17 +7,17 @@
                     <span class="navbar-user-name">{{ $user.data.name }}</span>!
                 </div>
                 <img class="navbar-logo" src="/img/nz-logo-light.png">
-                <button class="navbar-hamburger" @click="siderbarIsOpen = true">
+                <button class="navbar-hamburger" @click="sidebarIsOpen = true">
                     <div>
                         <div />
                     </div>
                 </button>
             </div>
         </div>
-        <div class="sidenav" :class="{ 'sidenav-hidden': !siderbarIsOpen }">
+        <div class="sidenav" :class="{ 'sidenav-hidden': !sidebarIsOpen }">
             <button
                 class="sidenav-close modal-close"
-                @click="siderbarIsOpen = false"
+                @click="sidebarIsOpen = false"
             >
                 <div>
                     <div />
@@ -53,22 +53,22 @@ export default {
     props: ['loggedIn', 'userData'],
     watch: {
         $route (to, from) {
-            this.siderbarIsOpen = false;
+            this.sidebarIsOpen = false;
         }
     },
     methods: {
         openLogin () {
-            this.siderbarIsOpen = false;
+            this.sidebarIsOpen = false;
             this.$emit('openLogin');
         },
         logout () {
-            this.siderbarIsOpen = false;
+            this.sidebarIsOpen = false;
             this.$emit('logout');
         }
     },
     data () {
         return {
-            siderbarIsOpen: false
+            sidebarIsOpen: false
         };
     }
 };
