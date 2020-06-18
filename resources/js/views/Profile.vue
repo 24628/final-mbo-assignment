@@ -71,7 +71,12 @@
                             <label class="profile-company" for="company">
                                 Bedrijf
                             </label>
-                            <input v-model="company" type="text" id="company" class="profile-name-edit">
+                            <input
+                                id="company"
+                                v-model="company"
+                                type="text"
+                                class="profile-name-edit"
+                            >
                         </div>
                         <hr v-if="!edit" class="profile-line-phone">
                         <button
@@ -376,7 +381,7 @@ export default {
             if (this.role) {
                 await API.post(roleData, '/api/selectable-role-edit', true);
             }
-            await API.post({name: this.name}, '/api/user/name/' + this.user_id, true);
+            await API.post({ name: this.name }, '/api/user/name/' + this.user_id, true);
             this.edit = false;
         }
     }

@@ -11,7 +11,7 @@
                     id="select-color"
                     type="color"
                     name="select-color"
-                    :value="this.backgroundColorCodeItem"
+                    :value="backgroundColorCodeItem"
                     @change="setItemBackgroundColorData($event)"
                 >
                 <hr>
@@ -20,7 +20,7 @@
                     id="map_width"
                     type="text"
                     name="map_width"
-                    :value="this.mapWidth"
+                    :value="mapWidth"
                     @change="updateMapWidth($event)"
                 >
                 <label for="map_height">Select Map Height in meters</label>
@@ -28,7 +28,7 @@
                     id="map_height"
                     type="text"
                     name="map_height"
-                    :value="this.mapHeight"
+                    :value="mapHeight"
                     @change="updateMapHeight($event)"
                 >
                 <hr>
@@ -65,12 +65,12 @@
             <button class="button-create-item map-settings-container-items" @click="clearMap">
                 Clear map
             </button>
-            <div
-                class="map-admin-info"
+            <button
+                class="button-create-item map-settings-container-items"
                 @click="setModalState(`modalMapForm`)"
             >
                 Map info
-            </div>
+            </button>
         </div>
         <div ref="mapHolder" class="map-holder" />
         <modal-map-form
@@ -105,7 +105,9 @@ export default {
             selectedItem: {},
             timeoutPaste: undefined,
             timeoutUndo: undefined,
-            modalMapForm: false
+            modalMapForm: false,
+            mapExist: false,
+            mapId: null
         };
     },
     methods: {
@@ -205,10 +207,9 @@ export default {
         },
         addNewItem () {
             this.items.push(this.generateItemObject());
-            const container = this.$refs.mapHolder;
-            container.appendChild(this.createNewDomElement());
+            this.createNewDomElement();
         },
-        createNewDomElement (backgroundColorCodeItem = this.backgroundColorCodeItem, width = 150, height = 150) {
+        createNewDomElement (backgroundColorCodeItem = this.backgroundColorCodeItem, width = 150, height = 150, parentOffsetX = 0, parentOffsetY = 0) {
             const item = create({
                 selector: 'div',
                 id: `stand-id-${this.counter}`,
@@ -229,7 +230,15 @@ export default {
             item.style.width = width + 'px';
             item.style.height = height + 'px';
             item.appendChild(paragraph);
-            return item;
+
+            item.style.webkitTransform =
+                item.style.transform =
+                    'translate(' + parentOffsetX + 'px, ' + parentOffsetY + 'px)';
+            item.setAttribute('data-x', parentOffsetX);
+            item.setAttribute('data-y', parentOffsetY);
+
+            const container = this.$refs.mapHolder;
+            container.appendChild(item);
         },
         deleteItemFromArray (event) {
             this.items = this.items.filter((obj) => {
@@ -372,8 +381,11 @@ export default {
                 }),
                 event_id: this.event_id
             };
-
-            API.post(data, '/api/map`');
+            if (!this.mapExist) {
+                API.post(data, '/api/map');
+            } else {
+                API.post(data, '/api/map/' + this.mapId, true);
+            }
         },
         clearMap () {
             if (!confirm('Weet u zeker dat u de map wilt leeg maken')) return null;
@@ -382,6 +394,28 @@ export default {
             this.counter = 0;
             this.items = [];
             this.clearCopyState();
+        },
+        async fillMapIfNeeded () {
+            const res = await API.get('/api/map/' + this.$route.params.event_id);
+            if (res.data === 'Error') console.log(res);
+            if (!res.data.json) return;
+            this.mapId = res.data.id;
+            this.mapExist = true;
+            const data = JSON.parse(res.data.json);
+            this.mapHeight = data.map.height;
+            this.mapWidth = data.map.width;
+            const items = data.items;
+            items.forEach((el) => {
+                this.createNewDomElement(
+                    el.style.backgroundColor,
+                    el.style.width,
+                    el.style.height,
+                    el.positionFromParent.x,
+                    el.positionFromParent.y
+                );
+            });
+            this.items = items;
+            this.counter = items.length;
         }
     },
     mounted () {
@@ -390,6 +424,7 @@ export default {
         this.startCopyPasteState = this.startCopyPasteState.bind(this);
         this.setSelectedItem = this.setSelectedItem.bind(this);
         this.init();
+        this.fillMapIfNeeded();
     },
     beforeDestroy () {
         this.clearCopyState();

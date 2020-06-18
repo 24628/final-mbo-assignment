@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Map;
 use App\Rules\EventExistValidator;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -29,13 +30,19 @@ class MapController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Map $map
+     * @param $id
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(Map $map)
+    public function show($id)
     {
         $this->authorize('read', Map::class);
+
+        $event = Event::query()->where('id', $id)->first();
+        if($event == null){
+            return response()->json('Error', 404);
+        }
+        $map = Map::query()->where('event_id', $event->id)->first();
 
         return response()->json($map, 200);
     }
@@ -52,7 +59,7 @@ class MapController extends Controller
         $this->authorize('write', Map::class);
 
         $validator = Validator::make($request->all(), [
-            'name' => ['required','max:255'],
+            'name' => ['required', 'max:255'],
             'json' => ['required'],
             'event_id' => ['required', new EventExistValidator],
         ]);
@@ -79,7 +86,7 @@ class MapController extends Controller
         $this->authorize('write', Map::class);
 
         $validator = Validator::make($request->all(), [
-            'name' => ['required','max:255'],
+            'name' => ['required', 'max:255'],
             'json' => ['required'],
             'event_id' => ['required', new EventExistValidator],
         ]);
