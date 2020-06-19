@@ -76,6 +76,8 @@ export default {
             counter++;
         });
 
+        const permissions = await API.get('/api/map/register/');
+        console.log(permissions);
         this.init();
     },
     beforeDestroy () {

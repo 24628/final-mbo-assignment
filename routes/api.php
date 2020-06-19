@@ -24,6 +24,8 @@ Route::get('/event/map/{event}', 'OverviewController@map')->name('event.map');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
+    Route::get('/map/register/', 'MapController@isAllowedToRegister');
+
     Route::post('logout', 'Auth\LoginController@logout');
     Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
 

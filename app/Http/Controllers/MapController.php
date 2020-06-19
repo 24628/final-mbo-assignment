@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Map;
 use App\Rules\EventExistValidator;
+use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MapController extends Controller
@@ -117,5 +119,17 @@ class MapController extends Controller
 
         return response()->json(['message' => 'Map deleted successfully']);
 
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function isAllowedToRegister(){
+        if(Auth::id() == null){
+            return response()->json(false, 200);
+        }
+
+        $user = User::findOrFail(Auth::id());
+        return response()->json($user->can('register', Map::class), 200);
     }
 }
