@@ -6,13 +6,13 @@
                 <input v-model="searchString" type="text">
                 <select v-model="selectedRole">
                     <option value="">Alles</option>
-                    <option v-for="role in roles">{{ role }}</option>
+                    <option v-for="role in roles" :key="'role-' + role">{{ role }}</option>
                 </select>
             </span>
         </label>
         <div class="search-results">
             <template v-for="(user,index) in data">
-                <router-link class="search-result" :to="'profile/' + user.id">
+                <router-link :key="'user-' + user.id" class="search-result" :to="'profile/' + user.id">
                     <b>{{ index + 1 }}</b><p>{{ user.name }}</p>
                 </router-link>
             </template>

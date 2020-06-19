@@ -536,7 +536,7 @@ export default {
             }
         },
         async subscribeEvent (selectedSpeakers = null, selectedKeyNotes = null) {
-            if (!!selectedSpeakers || !!selectedKeynotes) {
+            if (!!selectedSpeakers || !!selectedKeyNotes) {
                 selectedSpeakers = this.selectedSpeakers;
                 selectedKeyNotes = this.selectedKeyNotes;
             }
