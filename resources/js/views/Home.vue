@@ -54,7 +54,6 @@ export default ({
     async mounted () {
         const response = await API.get('/api/event-overview');
         this.data = response.data;
-        console.log(JSON.parse(JSON.stringify(response.data)));
     },
     data () {
         return {

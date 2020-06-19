@@ -477,7 +477,6 @@ export default {
     methods: {
         async updateEvent () {
             this.updating = 1;
-            console.log(this.updating);
             const selectedSpeakers = this.selectedSpeakers;
             const selectedKeyNotes = this.selectedKeyNotes;
             await this.subscribeEvent(selectedSpeakers, selectedKeyNotes);
@@ -489,7 +488,6 @@ export default {
             const res = await API.get(
                 '/api/is-subscribed/' + this.$route.params.id
             );
-            console.log(res);
             if (res.data.event_id) {
                 this.subscribed = true;
                 const selected = JSON.parse(res.data.item_ids);

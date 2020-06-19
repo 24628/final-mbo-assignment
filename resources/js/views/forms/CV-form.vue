@@ -60,7 +60,6 @@ export default {
                 document.body.appendChild(canvas);
             };
             const uploadBase64 = function (string) {
-                console.log(string);
                 API.post({ cv: string }, '/api/profile-cv');
             };
 

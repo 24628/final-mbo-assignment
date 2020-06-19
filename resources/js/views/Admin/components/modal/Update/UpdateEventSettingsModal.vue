@@ -190,7 +190,6 @@ export default {
             e.preventDefault();
         },
         setFormData (res) {
-            console.log(res);
             const data = res.data;
 
             this.date_end = data.date_end;
