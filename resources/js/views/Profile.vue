@@ -112,10 +112,14 @@
                         </div>
                         <div>
                             registerd events
-                            <div v-for="ev in registerEvents">
+                            <div v-for="ev in registerEvents" :key="'event-r-' + ev.id">
                                 <div>{{ ev.event.name }}</div>
-                                <div @click="viewEvent(ev.event_id)">view event</div>
-                                <div @click="viewQRCode(ev.id)">view QR code (in modal)</div>
+                                <div @click="viewEvent(ev.event_id)">
+                                    view event
+                                </div>
+                                <div @click="viewQRCode(ev.id)">
+                                    view QR code (in modal)
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -304,11 +308,11 @@ export default {
         this.roles = roles.data;
     },
     methods: {
-        viewEvent(id){
-            window.location.href = window.location.origin + "/event/" + id;
+        viewEvent (id) {
+            window.location.href = window.location.origin + '/event/' + id;
         },
-        viewQRCode(id){
-            window.location.href = window.location.origin + "/profile/qr-code/" + id;
+        viewQRCode (id) {
+            window.location.href = window.location.origin + '/profile/qr-code/' + id;
         },
         emptyCV () {
             this.$refs.cvHolder.innerHTML = '';
