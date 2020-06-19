@@ -40,4 +40,14 @@ class MapPolicy
     public function write(User $user) {
         return in_array(Permissions::__WRITE_MAP__, json_decode($user->role->permissions, 1));
     }
+
+    /**
+     * Determine whether the user can register on map location
+     *
+     * @param User $user
+     * @return mixed
+     */
+    public function register(User $user) {
+        return in_array(Permissions::__REGISTER_MAP_LOCATION__, json_decode($user->role->permissions, 1));
+    }
 }

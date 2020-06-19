@@ -57,4 +57,6 @@ class Permissions extends Model {
     public const __READ_PROGRAM_ITEMS__ = 'read_program_items';
     public const __WRITE_PROGRAM_ITEMS__ = 'write_program_items';
 
+    public const __REGISTER_MAP_LOCATION__ = 'register_map_location';
+
 }

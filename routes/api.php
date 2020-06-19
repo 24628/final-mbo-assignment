@@ -20,6 +20,7 @@ Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLi
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('/event-overview/{event}', 'OverviewController@index')->name('event.overview');
 Route::get('/event-overview', 'OverviewController@event')->name('event');
+Route::get('/event/map/{event}', 'OverviewController@map')->name('event.map');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {

@@ -84,7 +84,7 @@
                         >
                             <button
                                 class="event-titlebar-btn"
-                                @click="() => {}"
+                                @click="viewMap()"
                             >
                                 Bekijk plattegrond
                             </button>
@@ -468,6 +468,7 @@ export default {
         if (response === undefined) {
             this.$router.replace('/404');
         }
+        this.eventId = response.data.id;
         this.data = response.data;
         if (this.data.congress[0]) {
             this.selectedSpeakers = new Array(this.data.congress[0].block.length);
@@ -601,12 +602,17 @@ export default {
                 this.selectedSpeakers[index] = null;
                 this.$forceUpdate();
             }
+        },
+        viewMap () {
+            this.$router.replace('/event/map/' + this.eventId);
+            console.log('map');
         }
     },
     data () {
         return {
             updating: 0,
             data: null,
+            eventId: null,
             subscribed: false,
             selectedSpeakers: [],
             selectedKeyNotes: [],

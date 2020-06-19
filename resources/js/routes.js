@@ -15,6 +15,7 @@ import datepickerExample from '@/js/views/DateTimeExample';
 import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 import NotFound from '@/js/views/NotFound';
+import Map from '@/js/views/Map';
 
 Vue.use(VueRouter);
 
@@ -93,6 +94,11 @@ const router = new VueRouter({
             path: '/datepicker',
             name: 'datepicker',
             component: datepickerExample
+        },
+        {
+            path: '/event/map/:event_id',
+            name: 'Map',
+            component: Map
         },
         {
             path: '*',
