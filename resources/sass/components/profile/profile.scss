@@ -1,194 +1,317 @@
-div.profile-container{
-  background-color: $dark-gray;
+div.profile-container {
+    background-color: $dark-gray;
 }
 
-.invis{
-  visibility: hidden;
-  display: none;
+.invis {
+    visibility: hidden;
+    display: none;
 }
-.mobile-wrapper{
-  flex: 1;
-  margin-top: 0;
-}
-@media (min-width: 980px) {
-  .profile-border{
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    box-shadow: 2px 0px 24px -8px black;
-  }
-  .profile-container{
-    flex: 1;
-    flex-direction: column;
-    display: flex;
-  }
-  .profile-top h1{
-    font-size: $font-size-big;
-    color: $basic-gray;
-    font-weight: bold;
-    margin: 0;
-  }
-  .profile-main-wrapper{
-    overflow: hidden;
-    background-color: $deep-gray;
-    color: $basic-gray;
-    position: relative;
 
-  }
-  .profile-main{
-    margin: 0 auto;
-    margin-top: 100px;
-    width: 50%;
-    text-align: left;
-  }
-  .profile-about{
-    background-color: $mid-gray;
-    flex: 2;
-    min-height: max-content;
-    padding: 100px;
-  }
-  div.profile-contact{
-    background-color: #c1c1c1;
+.mobile-wrapper {
     flex: 1;
-    min-height: max-content;
-    padding: 42px 140px ;
-    margin-top: -11px;
-  }
-  .profile-row-right{
-    display: flex;
-    flex-direction: column;
-  }
-  .contact-title{
-    font-size: 50px;
-    font-weight: bold;
-    line-height: 8px;
-    letter-spacing: 1px;
-  }
-  .profile-foto{
-    height: 300px;
-    width: 100%;
-    background-image: url(https://via.placeholder.com/280px);
-    background-size: cover;
-    background-position: center;
-  }
-  .profile-name{
-    margin-top: 66px;
-    margin-bottom: 0;
-    text-align: left;
-    font-size: 40px;
-    line-height: 69px;
-    letter-spacing: 1px;
-    font-weight: bold;
-  }
-  .profile-role, .profile-company-name{
-    text-align: left;
     margin-top: 0;
-    font-size: 25px ;
-    font-weight: bold;
-  }
-  .profile-company{
-    margin-top: 20px;
-    margin-bottom: 0;
-    text-align: left;
-    font-size: 30px;
-    line-height: 69px;
-    letter-spacing: 1px;
-    font-weight: bold;
-  }
-  .profile-edit{
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    left:  0;
-    top:  0;
-    background: rgba(0,0,0,.6);
-    padding: 24px 24px 0 0;
-    margin-top:  0;
-    text-align: right;
-    margin-right: 22px;
-  }
-  .profile-save{
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    left:  0;
-    top:  48px;
-    margin-top:  0;
-    text-align: right;
-    padding: 7px 47px;
-    background: rgba(0, 0, 0, 0);
-    border: 0;
-    color: $basic-gray;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  .profile-save-padding{
-    padding-bottom: 40px;
-  }
-  .profile-edit a{
-    color: $basic-gray;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  .profile-save a{
-    color: $basic-gray;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  .profile-about-border{
-    padding-left: 20px;
-    position: relative;
-    &:after{
-      content: "";
-      position: absolute;
-      width: 14px;
-      height: 100%;
-      left: 0;
-      top: 0;
-      background-color: $dark-gray;
-      border-radius: 7px;
+}
+
+@media (min-width: 980px) {
+    .profile-border {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        box-shadow: 2px 0px 24px -8px black;
+    }
+    .profile-container {
+        flex: 1;
+        flex-direction: column;
+        display: flex;
+    }
+    .profile-top h1 {
+        font-size: $font-size-big;
+        color: $basic-gray;
+        font-weight: bold;
+        margin: 0;
+    }
+    .profile-main-wrapper {
+        overflow: hidden;
+        background-color: $deep-gray;
+        color: $basic-gray;
+        position: relative;
+
+    }
+    .profile-main {
+        margin: 0 auto;
+        margin-top: 100px;
+        width: 50%;
+        text-align: left;
+    }
+    .profile-about {
+        background-color: $mid-gray;
+        flex: 2;
+        min-height: max-content;
+        padding: 36px 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    div.profile-contact {
+        background-color: #c1c1c1;
+        flex: 1;
+        min-height: max-content;
+        padding: 42px 140px;
+        margin-top: -11px;
+    }
+    .profile-row-right {
+        display: flex;
+        flex-direction: column;
+    }
+    .contact-title {
+        font-size: 50px;
+        font-weight: bold;
+        line-height: 8px;
+        letter-spacing: 1px;
+    }
+    .profile-foto {
+        height: 300px;
+        width: 100%;
+        background-image: url(https://via.placeholder.com/280px);
+        background-size: cover;
+        background-position: center;
+    }
+    .profile-name {
+        margin-top: 66px;
+        margin-bottom: 0;
+        text-align: left;
+        font-size: 40px;
+        line-height: 69px;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+    .profile-role, .profile-company-name {
+        text-align: left;
+        margin-top: 0;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .profile-company {
+        margin-top: 20px;
+        margin-bottom: 0;
+        text-align: left;
+        font-size: 30px;
+        line-height: 69px;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+    .profile-edit {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .6);
+        padding: 24px 24px 0 0;
+        margin-top: 0;
+        text-align: right;
+        margin-right: 22px;
+    }
+    .profile-save {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 48px;
+        margin-top: 0;
+        text-align: right;
+        padding: 7px 47px;
+        background: rgba(0, 0, 0, 0);
+        border: 0;
+        color: $basic-gray;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .profile-save-padding {
+        padding-bottom: 40px;
+    }
+    .profile-edit a {
+        color: $basic-gray;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .profile-save a {
+        color: $basic-gray;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .profile-about-border {
+        padding-left: 20px;
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: $dark-gray;
+            border-radius: 7px;
+        }
+
+    }
+    .profile-cv-input {
+        color: transparent;
+        position: absolute;
+        padding-top: 20px;
+    }
+    .profile-cv-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    .profile-cv-input::before {
+        content: 'Upload je CV';
+        display: inline-block;
+        background: $mid-gray;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+
+    }
+    .profile-cv-input:active::before, .profile-cv-input:hover::before {
+        background: $dark-gray;
+        cursor: pointer;
+    }
+    .profile-photo-input {
+        color: transparent;
+        position: absolute;
+        right: -154px;
+    }
+    .profile-photo-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    .profile-photo-input::before {
+        content: 'Upload je foto';
+        display: inline-block;
+        background: $mid-gray;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+
+    }
+    .profile-photo-input:active::before, .profile-photo-input:hover::before {
+        background: $dark-gray;
+    }
+    .profile-about-title {
+        font-weight: bold;
+        font-size: 50px;
+        margin: 0;
+    }
+    .profile-about-description {
+        font-size: 15px;
+        width: 404px;
+    }
+    textarea.profile-about-description {
+        background: $dark-gray;
+        border: 2px solid $dark-gray;
+        border-radius: $border-radius-small;
+        color: $basic-gray;
+    }
+    .profile-line-phone {
+        display: none;
+        visibility: hidden;
+    }
+    .contact-logo {
+        min-width: 483px;
+    }
+    .contact-logo svg {
+        fill: $deep-gray;
+        width: 40px;
+        height: 40px;
+        padding-top: 10px;
+    }
+    .contact-logo {
+        display: flex;
+        flex-wrap: wrap;
+
+        > div {
+            padding: 0 12px;
+            flex: 0;
+            width: 40px;
+            display: flex;
+            align-items: center;
+
+            a {
+                flex: 0 0 40px;
+                padding-right: 8px;
+            }
+
+            input {
+                flex: 1;
+            }
+        }
+
+        &.contact-logo-edit {
+            > div {
+                flex: 0 0 220px;
+            }
+        }
+
     }
 
-  }
-  .profile-cv-input{
-    color: transparent;
-    position: absolute;
-    padding-top: 20px;
-  }
-  .profile-cv-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .profile-cv-input::before{
-    content: 'Upload je CV';
-    display: inline-block;
-    background: $mid-gray;
-    border: 0;
-    border-radius: 6px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 15px;
-    color: $basic-gray;
-    text-align: right;
-    
-  }
-  .profile-cv-input:active::before, .profile-cv-input:hover::before {
-    background: $dark-gray;
-    cursor: pointer;
-  }
-  .profile-photo-input{
+    .download-cv {
+        background: $mid-gray;
+        display: inline-block;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+        cursor: pointer;
+    }
+    .download-cv:active::before, .download-cv:hover::before {
+        background: $dark-gray;
+        cursor: pointer;
+    }
+    .profile-name-edit {
+        width: 193px;
+        background: #404040;
+        border: 2px solid #404040;
+        border-radius: 14px;
+        color: #C1C1C1;
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+
+.profile-photo-input {
     color: transparent;
     position: absolute;
     right: -154px;
-  }
-  .profile-photo-input::-webkit-file-upload-button {
+}
+
+.profile-photo-input::-webkit-file-upload-button {
     visibility: hidden;
-  }
-  .profile-photo-input::before{
+}
+
+.profile-photo-input::before {
     content: 'Upload je foto';
     display: inline-block;
     background: $mid-gray;
@@ -203,524 +326,420 @@ div.profile-container{
     font-size: 15px;
     color: $basic-gray;
     text-align: right;
-    
-  }
-  .profile-photo-input:active::before, .profile-photo-input:hover::before {
+
+}
+
+.profile-photo-input:active::before, .profile-photo-input:hover::before {
     background: $dark-gray;
-  }
-  .profile-about-title{
-    font-weight: bold;
-    font-size:50px;
-    margin: 0;
-  }
-  .profile-about-description{
-    font-size: 15px;
-    width: 404px;
-  }
-  textarea.profile-about-description{
-    background: $dark-gray;
-    border: 2px solid $dark-gray;
-    border-radius: $border-radius-small;
-    color: $basic-gray;
-  }
-  .profile-line-phone{
-    display: none;
-    visibility: hidden;
-  }
-  .contact-logo{
-    min-width: 483px;
-  }
-  .contact-logo svg{
+}
+
+.contact-logo svg {
     fill: $deep-gray;
     width: 40px;
     height: 40px;
     padding-top: 10px;
-  }
-  .contact-logo{
-    display: flex;
-    flex-wrap: wrap;
-    > div {
-        padding: 0 12px;
-        flex: 0;
-        width: 40px;
-        display: flex;
-        align-items: center;
-        a{
-            flex: 0 0 40px;
-            padding-right: 8px;
-        }
-        input{
-            flex: 1;
-        }
-    }
-    &.contact-logo-edit{
-        > div{
-        flex: 0 0 220px;
-            }
-    }
-    
 }
 
-  .download-cv{
-    background: $mid-gray;
-    display: inline-block;
-    border: 0;
-    border-radius: 6px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    font-weight: 700;
-    font-size: 15px;
-    color: $basic-gray;
-    text-align: right;
-    cursor: pointer;
-  }
-  .download-cv:active::before, .download-cv:hover::before {
-    background: $dark-gray;
-    cursor: pointer;
-  }
-  .profile-name-edit{
-    width:193px ;
+.form-profile-edit {
+    display: contents;
+}
+
+.contact-input {
+    width: 193px;
     background: #404040;
     border: 2px solid #404040;
     border-radius: 14px;
     color: #C1C1C1;
-    display: block;
-    margin-bottom: 5px;
-  }
-}
-
-
-
-.profile-photo-input{
-  color: transparent;
-  position: absolute;
-  right: -154px;
-}
-.profile-photo-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.profile-photo-input::before{
-  content: 'Upload je foto';
-  display: inline-block;
-  background: $mid-gray;
-  border: 0;
-  border-radius: 6px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
-  color: $basic-gray;
-  text-align: right;
-  
-}
-.profile-photo-input:active::before, .profile-photo-input:hover::before {
-  background: $dark-gray;
-}
-
-.contact-logo svg{
-  fill: $deep-gray;
-  width: 40px;
-  height: 40px;
-  padding-top: 10px;
-}
-.form-profile-edit{
-  display: contents;
-}
-.contact-input{
-  width: 193px;
-  background: #404040;
-  border: 2px solid #404040;
-  border-radius: 14px;
-  color: #C1C1C1;
 }
 
 @media only screen and (min-width: 0px) and (max-width: $mobile-breakpoint) {
-  body{color: $basic-gray;}
-  .mobile-wrapper{
-    background-color: $deep-gray;
-    color: $basic-gray;
-    text-align: center;
-    border: 0px solid black;
-    border-top-left-radius: $border-radius-big;
-    border-top-right-radius: $border-radius-big;
-    position: relative;
-    padding-bottom: 20px;
-  }
-  .profile-cv-input{
-    color: transparent;
-    margin: 0 auto;
-    width: 108px;
-  }
-  .profile-cv-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .profile-cv-input::before{
-    content: 'Upload je CV';
-    display: inline-block;
-    background: $mid-gray;
-    border: 0;
-    border-radius: 6px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 15px;
-    color: $basic-gray;
-    text-align: right;
-    
-  }
-  .profile-cv-input:active::before, .profile-cv-input:hover::before {
-    background: $dark-gray;
-    cursor: pointer;
-  }
- .profile-edit{
-    text-align: right;
-    padding-right: 15px;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    width: 100%;
-    left: 0;
-    background: rgba(0, 0, 0, 0.6);
-    margin: 0;
-    padding: 12px 24px 0 0;
-  }
-  .profile-edit a{ 
-    color: $basic-gray;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .profile-save-padding{
-    padding-bottom:30px;
-  }
-  .profile-edit a span, .profile-about-title{
-    visibility: hidden;
-    display: none;
-  }
-  .profile-save{
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 28px;
-    margin-top: 0;
-    text-align: right;
-    padding: 4px 47px 7px;
-    background: rgba(0, 0, 0, 0);
-    border: 0;
-    color: #C1C1C1;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  .profile-name-edit{
-    width:247px ;
-    background: #404040;
-    border: 2px solid #404040;
-    border-radius: 14px;
-    color: #C1C1C1;
-    display: block;
-    margin: 5px auto;
-  }
-  .profile-name-edit:first-child{
-    margin-top: 33px;
-  }
-  .profile-foto{
-    height: 225px;
-    width: 100%;
-    background-image: url(https://via.placeholder.com/280px);
-    background-size: cover;
-    background-position: center;
-  }
-  .navbar-user{
-    left: 0;
-  }
-  .profile-name{
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 0;
-  }
-  .profile-role{
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  .profile-about-mobile{
-    width: 253px;
-    text-align: left;
-    margin: 0 auto;
-  }
-  .profile-about-description{
+    body {
+        color: $basic-gray;
+    }
+    .mobile-wrapper {
+        background-color: $deep-gray;
+        color: $basic-gray;
+        text-align: center;
+        border: 0px solid black;
+        border-top-left-radius: $border-radius-big;
+        border-top-right-radius: $border-radius-big;
+        position: relative;
+        padding-bottom: 20px;
+    }
+    .profile-cv-input {
+        color: transparent;
+        margin: 0 auto;
+        width: 108px;
+    }
+    .profile-cv-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    .profile-cv-input::before {
+        content: 'Upload je CV';
+        display: inline-block;
+        background: $mid-gray;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+
+    }
+    .profile-cv-input:active::before, .profile-cv-input:hover::before {
+        background: $dark-gray;
+        cursor: pointer;
+    }
+    .profile-edit {
+        text-align: right;
+        padding-right: 15px;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        width: 100%;
+        left: 0;
+        background: rgba(0, 0, 0, 0.6);
+        margin: 0;
+        padding: 12px 24px 0 0;
+    }
+    .profile-edit a {
+        color: $basic-gray;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .profile-save-padding {
+        padding-bottom: 30px;
+    }
+    .profile-edit a span, .profile-about-title {
+        visibility: hidden;
+        display: none;
+    }
+    .profile-save {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 28px;
+        margin-top: 0;
+        text-align: right;
+        padding: 4px 47px 7px;
+        background: rgba(0, 0, 0, 0);
+        border: 0;
+        color: #C1C1C1;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .profile-name-edit {
+        width: 247px;
+        background: #404040;
+        border: 2px solid #404040;
+        border-radius: 14px;
+        color: #C1C1C1;
+        display: block;
+        margin: 5px auto;
+    }
+    .profile-name-edit:first-child {
+        margin-top: 33px;
+    }
+    .profile-foto {
+        height: 225px;
+        width: 100%;
+        background-image: url(https://via.placeholder.com/280px);
+        background-size: cover;
+        background-position: center;
+    }
+    .navbar-user {
+        left: 0;
+    }
+    .profile-name {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .profile-role {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+    .profile-about-mobile {
+        width: 253px;
+        text-align: left;
+        margin: 0 auto;
+    }
+    .profile-about-description {
 
 
-    font-size: 15px;
-  }
-  textarea.profile-about-description{
-    background: $dark-gray;
-    border: 2px solid $dark-gray;
-    border-radius: $border-radius-small;
-    color: $basic-gray;
-    width: 247px;
-  }
-  .profile-line-phone{
-    width: 247px;
-    height: 0;
-    position: relative;
-    bottom: 10px;
-    color: $dark-gray;
-    border: 0;
-    border-top: 1px solid;
-  }
-  .contact-title{
-    padding-top: 40px;
-    width: 253px;
-    text-align: left;
-    margin: 0 auto;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .contact-logo{
-    width: 253px;
-    text-align: left;
-    margin: 0 auto;
-  }
-  .contact-logo svg{
-    fill: $basic-gray;
-    width: 40px;
-    height: 40px;
-    padding-top: 10px;
-  }
-  .profile-main-wrapper{
-  }
-  .profile-about-mobile{
-    margin-top: -170px;
-  }
-  .profile-top{
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 25px;
-  }
-  .profile-company{
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  .profile-company-name{
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 5px;
-  }
-  .download-cv{
-    background: $mid-gray;
-    display: inline-block;
-    border: 0;
-    border-radius: 6px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    font-weight: 700;
-    font-size: 15px;
-    color: $basic-gray;
-    text-align: right;
-    cursor: pointer;
-  }
-  .download-cv:active::before, .download-cv:hover::before {
-    background: $dark-gray;
-    cursor: pointer;
-  }
+        font-size: 15px;
+    }
+    textarea.profile-about-description {
+        background: $dark-gray;
+        border: 2px solid $dark-gray;
+        border-radius: $border-radius-small;
+        color: $basic-gray;
+        width: 247px;
+    }
+    .profile-line-phone {
+        width: 247px;
+        height: 0;
+        position: relative;
+        bottom: 10px;
+        color: $dark-gray;
+        border: 0;
+        border-top: 1px solid;
+    }
+    .contact-title {
+        padding-top: 40px;
+        width: 253px;
+        text-align: left;
+        margin: 0 auto;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .contact-logo {
+        width: 253px;
+        text-align: left;
+        margin: 0 auto;
+    }
+    .contact-logo svg {
+        fill: $basic-gray;
+        width: 40px;
+        height: 40px;
+        padding-top: 10px;
+    }
+    .profile-main-wrapper {
+    }
+    .profile-about-mobile {
+        margin-top: -170px;
+    }
+    .profile-top {
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 25px;
+    }
+    .profile-company {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .profile-company-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    .download-cv {
+        background: $mid-gray;
+        display: inline-block;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+        cursor: pointer;
+    }
+    .download-cv:active::before, .download-cv:hover::before {
+        background: $dark-gray;
+        cursor: pointer;
+    }
 }
-@media only screen and (min-width: ($mobile-breakpoint + 1)) and (max-width: ($tablet-breakpoint - 1)){
-  body{color: $basic-gray;}
-  .profile-cv-input{
-    color: transparent;
-    margin: 0 auto;
-    width: 108px;
-  }
-  .profile-cv-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .profile-cv-input::before{
-    content: 'Upload je CV';
-    display: inline-block;
-    background: $mid-gray;
-    border: 0;
-    border-radius: 6px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 15px;
-    color: $basic-gray;
-    text-align: right;
-    
-  }
-  .profile-cv-input:active::before, .profile-cv-input:hover::before {
-    background: $dark-gray;
-    cursor: pointer;
-  }
-  .mobile-wrapper{
-    background-color: $deep-gray;
-    color: $basic-gray;
-    text-align: center;
-    border: 0px solid black;
-    border-top-left-radius: $border-radius-big;
-    border-top-right-radius: $border-radius-big;
-    position: relative;
-    padding-bottom: 20px;
-  }
- .profile-edit{
-    text-align: right;
-    padding-right: 15px;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    width: 100%;
-    left: 0;
-    background: rgba(0, 0, 0, 0.6);
-    margin: 0;
-    padding: 12px 24px 0 0;
-  }
-  .profile-edit a{ 
-    color: $basic-gray;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .profile-save-padding{
-    padding-bottom:30px;
-  }
-  .profile-edit a span, .profile-about-title{
-    visibility: hidden;
-    display: none;
-  }
-  .profile-save{
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 28px;
-    margin-top: 0;
-    text-align: right;
-    padding: 4px 47px 7px;
-    background: rgba(0, 0, 0, 0);
-    border: 0;
-    color: #C1C1C1;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  .profile-name-edit{
-    width:247px ;
-    background: #404040;
-    border: 2px solid #404040;
-    border-radius: 14px;
-    color: #C1C1C1;
-    display: block;
-    margin: 5px auto;
-  }
-  .profile-foto{
-    height: 300px;
-    width: 100%;
-    background-image: url(https://via.placeholder.com/280px);
-    background-size: cover;
-    background-position: center;
-  }
-  .navbar-user{
-    left: 0;
-  }
-  .profile-name{
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 0;
-  }
-  .profile-role{
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  .profile-about-mobile{
-    text-align: left;
-  }
-  .profile-about-description{
-    font-size: 15px;
-  }
-  textarea.profile-about-description{
-    background: $dark-gray;
-    border: 2px solid $dark-gray;
-    border-radius: $border-radius-small;
-    color: $basic-gray;
-    width: 247px;
-  }
-  .profile-line-phone{
-    width: 247px;
-    height: 0;
-    position: relative;
-    bottom: 10px;
-    color: $dark-gray;
-    border: 0;
-    border-top: 1px solid;
-  }
-  .contact-title{
-    padding-top: 15px;
-    width: 253px;
-    text-align: left;
-    margin: 0 auto;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .contact-logo{
-    width: 253px;
-    text-align: left;
-    margin: 0 auto;
-  }
-  .contact-logo svg{
-    fill: $basic-gray;
-    width: 40px;
-    height: 40px;
-    padding-top: 10px;
-  }
-  .profile-main-wrapper{
-  }
-  .profile-about{
-    width: 247px;
-    margin: 0 auto;
-  }
-  .profile-top{
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 25px;
-  }
-  .profile-company{
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  .profile-company-name{
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 5px;
-  }
-  .download-cv{
-    background: $mid-gray;
-    display: inline-block;
-    border: 0;
-    border-radius: 6px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    font-weight: 700;
-    font-size: 15px;
-    color: $basic-gray;
-    text-align: right;
-    cursor: pointer;
-  }
-  .download-cv:active::before, .download-cv:hover::before {
-    background: $dark-gray;
-    cursor: pointer;
-  }
+
+@media only screen and (min-width: ($mobile-breakpoint + 1)) and (max-width: ($tablet-breakpoint - 1)) {
+    body {
+        color: $basic-gray;
+    }
+    .profile-cv-input {
+        color: transparent;
+        margin: 0 auto;
+        width: 108px;
+    }
+    .profile-cv-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    .profile-cv-input::before {
+        content: 'Upload je CV';
+        display: inline-block;
+        background: $mid-gray;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+
+    }
+    .profile-cv-input:active::before, .profile-cv-input:hover::before {
+        background: $dark-gray;
+        cursor: pointer;
+    }
+    .mobile-wrapper {
+        background-color: $deep-gray;
+        color: $basic-gray;
+        text-align: center;
+        border: 0px solid black;
+        border-top-left-radius: $border-radius-big;
+        border-top-right-radius: $border-radius-big;
+        position: relative;
+        padding-bottom: 20px;
+    }
+    .profile-edit {
+        text-align: right;
+        padding-right: 15px;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        width: 100%;
+        left: 0;
+        background: rgba(0, 0, 0, 0.6);
+        margin: 0;
+        padding: 12px 24px 0 0;
+    }
+    .profile-edit a {
+        color: $basic-gray;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .profile-save-padding {
+        padding-bottom: 30px;
+    }
+    .profile-edit a span, .profile-about-title {
+        visibility: hidden;
+        display: none;
+    }
+    .profile-save {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 28px;
+        margin-top: 0;
+        text-align: right;
+        padding: 4px 47px 7px;
+        background: rgba(0, 0, 0, 0);
+        border: 0;
+        color: #C1C1C1;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .profile-name-edit {
+        width: 247px;
+        background: #404040;
+        border: 2px solid #404040;
+        border-radius: 14px;
+        color: #C1C1C1;
+        display: block;
+        margin: 5px auto;
+    }
+    .profile-foto {
+        height: 300px;
+        width: 100%;
+        background-image: url(https://via.placeholder.com/280px);
+        background-size: cover;
+        background-position: center;
+    }
+    .navbar-user {
+        left: 0;
+    }
+    .profile-name {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .profile-role {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+    .profile-about-mobile {
+        text-align: left;
+    }
+    .profile-about-description {
+        font-size: 15px;
+    }
+    textarea.profile-about-description {
+        background: $dark-gray;
+        border: 2px solid $dark-gray;
+        border-radius: $border-radius-small;
+        color: $basic-gray;
+        width: 247px;
+    }
+    .profile-line-phone {
+        width: 247px;
+        height: 0;
+        position: relative;
+        bottom: 10px;
+        color: $dark-gray;
+        border: 0;
+        border-top: 1px solid;
+    }
+    .contact-title {
+        padding-top: 15px;
+        width: 253px;
+        text-align: left;
+        margin: 0 auto;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .contact-logo {
+        width: 253px;
+        text-align: left;
+        margin: 0 auto;
+    }
+    .contact-logo svg {
+        fill: $basic-gray;
+        width: 40px;
+        height: 40px;
+        padding-top: 10px;
+    }
+    .profile-main-wrapper {
+    }
+    .profile-about {
+        width: 247px;
+        margin: 0 auto;
+    }
+    .profile-top {
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 25px;
+    }
+    .profile-company {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .profile-company-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    .download-cv {
+        background: $mid-gray;
+        display: inline-block;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 15px;
+        color: $basic-gray;
+        text-align: right;
+        cursor: pointer;
+    }
+    .download-cv:active::before, .download-cv:hover::before {
+        background: $dark-gray;
+        cursor: pointer;
+    }
 }

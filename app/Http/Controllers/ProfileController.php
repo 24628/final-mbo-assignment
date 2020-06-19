@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Http\Requests\ProfileValidationRequest;
 use App\Profile;
+use App\RegistrationEvents;
 use App\User;
 use App\Rules\Base64Validator;
 use App\Rules\HtmlValidator;
@@ -202,5 +204,16 @@ class ProfileController extends Controller
             ->first();
         return response()->json($user, 200);
 
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function event($id){
+
+        $rE = RegistrationEvents::query()->where('user_id', $id)->with('event')->get();
+
+        return response()->json($rE, 200);
     }
 }

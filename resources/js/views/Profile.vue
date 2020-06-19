@@ -110,6 +110,14 @@
                                 class="profile-about-description"
                             />
                         </div>
+                        <div>
+                            registerd events
+                            <div v-for="ev in registerEvents">
+                                <div>{{ ev.event.name }}</div>
+                                <div>view event</div>
+                                <div>view ticket (in modal)</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="profile-border profile-contact profile-border">
                         <p class="contact-title">
@@ -256,15 +264,20 @@ export default {
             image: null,
             user_id: null,
             profileExist: false,
-            profileId: null
+            profileId: null,
+            registerEvents: []
         };
     },
     async mounted () {
         // TODO: add route.id so user can check other profiles
         const res = await API.get('/api/profile-check');
+
         if (!res.data) return;
         const data = res.data;
         this.user_id = data.id;
+        const rE = await API.get('/api/register/event/user/' + this.user_id);
+        this.registerEvents = rE.data;
+        console.log(this.registerEvents);
         if (data.name) {
             this.name = data.name;
         }

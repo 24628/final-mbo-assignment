@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::delete('event-settings/{event}', 'EventSettingsController@destroy')->name('event-settings.destroy');
 
     Route::get('profile', 'ProfileController@index')->name('profile');
+    Route::get('/register/event/user/{id}', 'ProfileController@event')->name('profile');
     Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
     Route::post('profile', 'ProfileController@store')->name('profile.store');
     Route::patch('profile/{profile}', 'ProfileController@update')->name('profile.update');
