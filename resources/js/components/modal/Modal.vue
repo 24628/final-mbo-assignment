@@ -25,8 +25,6 @@
                     v-else-if="selectroute==='ForgotPassword'"
                     @login="selectroute='login'"
                 />
-
-                <account-verification v-else-if="selectroute==='Accountverification'" />
             </div>
         </div>
     </div>
@@ -35,7 +33,6 @@
 <script>
 import login from '@/js/components/modal/Login';
 import ForgotPassword from '@/js/components/modal/ForgotPassword';
-import AccountVerification from '@/js/components/modal/AccountVerification';
 export default {
     name: 'Modal',
     data () {
@@ -44,7 +41,7 @@ export default {
 
         };
     },
-    components: { login, ForgotPassword, AccountVerification },
+    components: { login, ForgotPassword },
     methods: {
         close () {
             this.$emit('close');

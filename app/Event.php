@@ -34,7 +34,7 @@ class Event extends Model
 
     public function map(){
 
-        return $this->hasMany('App\Map', 'event_id');
+        return $this->hasOne('App\Map', 'event_id');
 
     }
 
