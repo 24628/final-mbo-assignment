@@ -156,6 +156,7 @@
                         evenement.
                     </p>
                     <div
+                        v-if="data.congress[0]"
                         class="event-congress-rounds column-desktop-12 column-tablet-12 column-mobile-12 flex-grid"
                     >
                         <template v-for="congress in data.congress">
@@ -354,6 +355,7 @@
                         </div>
                     </div>
                     <div
+                        v-if="data.congress[0]"
                         class="event-my_speakers-rounds column-desktop-12 column-tablet-12 column-mobile-12 flex-grid"
                     >
                         <div
@@ -467,8 +469,10 @@ export default {
             this.$router.replace('/404');
         }
         this.data = response.data;
-        this.selectedSpeakers = new Array(this.data.congress[0].block.length);
-        this.selectedKeyNotes = new Array(this.data.congress[0].block.length);
+        if (this.data.congress[0]) {
+            this.selectedSpeakers = new Array(this.data.congress[0].block.length);
+            this.selectedKeyNotes = new Array(this.data.congress[0].block.length);
+        }
         if (!!this.$user.data && !!this.$user.data.name) {
             this.getSubscripedData();
         }
@@ -492,28 +496,30 @@ export default {
             if (res.data !== false) {
                 this.subscribed = true;
                 const selected = JSON.parse(res.data.item_ids);
-                for (
-                    let roundNumbmer = 0;
-                    roundNumbmer < this.data.congress[0].block.length;
-                    roundNumbmer++
-                ) {
-                    const round = this.data.congress[0].block[roundNumbmer];
-                    for (let i = 0; i < round.items.length; i++) {
-                        if (selected.includes(round.items[i].id)) {
-                            if (round.items[i].type === 'keynotes') {
-                                this.setSpeaker(
-                                    roundNumbmer,
-                                    round.items[i],
-                                    this.getTime(round.items[i].date_start),
-                                    true
-                                );
-                            } else {
-                                this.setSpeaker(
-                                    roundNumbmer,
-                                    round.items[i],
-                                    round.date_start,
-                                    false
-                                );
+                if (this.data.congress[0]) {
+                    for (
+                        let roundNumbmer = 0;
+                        roundNumbmer < this.data.congress[0].block.length;
+                        roundNumbmer++
+                    ) {
+                        const round = this.data.congress[0].block[roundNumbmer];
+                        for (let i = 0; i < round.items.length; i++) {
+                            if (selected.includes(round.items[i].id)) {
+                                if (round.items[i].type === 'keynotes') {
+                                    this.setSpeaker(
+                                        roundNumbmer,
+                                        round.items[i],
+                                        this.getTime(round.items[i].date_start),
+                                        true
+                                    );
+                                } else {
+                                    this.setSpeaker(
+                                        roundNumbmer,
+                                        round.items[i],
+                                        round.date_start,
+                                        false
+                                    );
+                                }
                             }
                         }
                     }
