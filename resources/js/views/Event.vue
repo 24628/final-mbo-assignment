@@ -469,6 +469,10 @@ export default {
         if (!!this.$user.data && !!this.$user.data.name) {
             await this.getSubscripedData();
         }
+
+        const r = await API.get('/api/event/tickets/' + this.eventId);
+        const data = r.data;
+        this.currentTickets = data;
     },
     methods: {
         async updateEvent () {
@@ -597,7 +601,6 @@ export default {
         },
         viewMap () {
             this.$router.replace('/event/map/' + this.eventId);
-            console.log('map');
         }
     },
     data () {
@@ -608,7 +611,7 @@ export default {
             subscribed: false,
             selectedSpeakers: [],
             selectedKeyNotes: [],
-            currentTickets: 135
+            currentTickets: null
         };
     }
 };
