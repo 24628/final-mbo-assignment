@@ -417,14 +417,6 @@
                         <button class="event-modal-signup-button" :disabled="!!updating" @click="unsubscribeEvent">
                             uitschrijven
                         </button>
-                        <div class="event-modal-text-holder">
-                            <div class="event-modal-text feedback" :class="{'showing' : updating === 1}">
-                                Je selectie word bijgewerkt
-                            </div>
-                            <div class="event-modal-text feedback" :class="{'showing' : updating === 2}">
-                                Je selectie is bijgewerkt
-                            </div>
-                        </div>
                     </template>
                     <template v-else>
                         <div
@@ -484,7 +476,6 @@ export default {
             console.log(this.updating);
             const selectedSpeakers = this.selectedSpeakers;
             const selectedKeyNotes = this.selectedKeyNotes;
-            await this.unsubscribeEvent();
             await this.subscribeEvent(selectedSpeakers, selectedKeyNotes);
             this.updating = 2;
             const _this = this;
@@ -494,7 +485,8 @@ export default {
             const res = await API.get(
                 '/api/is-subscribed/' + this.$route.params.id
             );
-            if (res.data !== false) {
+            console.log(res);
+            if (res.data.event_id) {
                 this.subscribed = true;
                 const selected = JSON.parse(res.data.item_ids);
                 if (this.data.congress[0]) {

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Http\Requests\UpdateUserNameRequest;
 use App\Permissions;
+use App\RegistrationEvents;
 use App\Role;
 use App\User;
 use Carbon\Carbon;
@@ -117,5 +119,19 @@ class UserController extends Controller
         $user->update(array('name' => $request->name));
 
         return response()->json(['message' => 'User updated successfully'], 200);
+    }
+
+    /**
+     * @param Event $event
+     * @return JsonResponse
+     */
+    public function isSubscribed(Event $event){
+
+        $q = RegistrationEvents::query()
+            ->where('user_id', Auth::id())
+            ->where('event_id', $event->id)
+            ->first();
+
+        return response()->json($q, 200);
     }
 }

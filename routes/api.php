@@ -24,6 +24,7 @@ Route::get('/event/map/{event}', 'OverviewController@map')->name('event.map');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
+    Route::get('/is-subscribed/{event}', 'UserController@isSubscribed');
     Route::get('/map/register/', 'MapController@isAllowedToRegister');
 
     Route::post('logout', 'Auth\LoginController@logout');
@@ -110,7 +111,6 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('/block', 'BlockController@store');
     Route::patch('/block/{block}', 'BlockController@update');
     Route::delete('/block/{block}', 'BlockController@destroy');
-
 });
 
 

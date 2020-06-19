@@ -109,7 +109,7 @@ class EventController extends Controller
             $q->event_id = $event->id;
             $q->item_ids = $request->item_ids;
             $q->update();
-            return response()->json(['message' => 'successfully subscribed to the event'], 200);
+            return response()->json(['message' => 'successfully updated subscribed to the event'], 200);
         }
 
         if(RegistrationEvents::query()->where('event_id',$event->id)->count() >= $event->settings->max_registrations){
