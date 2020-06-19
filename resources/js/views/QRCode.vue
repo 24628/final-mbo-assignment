@@ -16,14 +16,10 @@
         data () {
             return {
                 rEventId: this.$route.params.id,
-                value: 'https://example.com',
+                value: window.location.origin + '/print/badge/' + this.rEventId,
                 size: 300,
             };
         },
-        methods: {},
-        mounted () {
-
-        }
     };
 </script>
 
