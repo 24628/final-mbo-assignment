@@ -149,6 +149,7 @@ class UserController extends Controller
             ->with('event')
             ->with('user')
             ->with('user.role')
+            ->with('user.profile')
             ->first();
 
         return response()->json($q, 200);
