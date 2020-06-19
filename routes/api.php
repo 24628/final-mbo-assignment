@@ -24,6 +24,7 @@ Route::get('/event/map/{event}', 'OverviewController@map')->name('event.map');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
+    Route::get('/print/badge/{id}', 'UserController@print');
     Route::get('/is-subscribed/{event}', 'UserController@isSubscribed');
     Route::get('/map/register/', 'MapController@isAllowedToRegister');
 

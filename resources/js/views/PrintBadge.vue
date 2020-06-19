@@ -6,6 +6,8 @@
 </template>
 
 <script>
+    import API from '../Api';
+
     export default {
         name: 'PrintBadge',
         components: {},
@@ -15,21 +17,23 @@
             };
         },
         methods: {},
-        mounted () {
-
+        async mounted () {
+            const res = await API.get('/api/print/badge/' + this.rEventId);
+            const data = res.data;
+            console.log(data);
         }
     };
 </script>
 
 <style>
 
-.print-main {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    z-index: 100 !important;
-    background: white;
-    margin-top: -80px;
-    border-radius: unset !important;
-}
+    .print-main {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100 !important;
+        background: white;
+        margin-top: -80px;
+        border-radius: unset !important;
+    }
 </style>
