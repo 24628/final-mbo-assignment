@@ -475,7 +475,7 @@ export default {
             this.selectedKeyNotes = new Array(this.data.congress[0].block.length);
         }
         if (!!this.$user.data && !!this.$user.data.name) {
-            this.getSubscripedData();
+            await this.getSubscripedData();
         }
     },
     methods: {

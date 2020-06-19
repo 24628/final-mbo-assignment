@@ -100,11 +100,16 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($request->event_id);
 
-        if (RegistrationEvents::query()
-                ->where('user_id', Auth::id())
-                ->where('event_id', $event->id)
-                ->first() != null) {
-            return response()->json(['message' => 'Already subscribed to this event'], 401);
+        $q = RegistrationEvents::query()
+            ->where('user_id', Auth::id())
+            ->where('event_id', $event->id)
+            ->first();
+        if ($q != null) {
+            $q->user_id = Auth::id();
+            $q->event_id = $event->id;
+            $q->item_ids = $request->item_ids;
+            $q->update();
+            return response()->json(['message' => 'successfully subscribed to the event'], 200);
         }
 
         if(RegistrationEvents::query()->where('event_id',$event->id)->count() >= $event->settings->max_registrations){
