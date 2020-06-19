@@ -359,7 +359,7 @@ export default {
             this.counter++;
             return {
                 id: `stand-id-${this.counter}`,
-                user_id: undefined,
+                user_id: null,
                 url: null,
                 style: {
                     width: width,

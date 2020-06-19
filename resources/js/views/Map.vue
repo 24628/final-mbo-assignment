@@ -58,7 +58,6 @@ export default {
         const data = res.data;
 
         const mapData = JSON.parse(data.json);
-
         const container = this.$refs.mapHolder;
         container.style.minWidth = mapData.map.width + 'px';
         container.style.minHeight = mapData.map.height + 'px';
