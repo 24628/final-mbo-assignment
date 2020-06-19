@@ -16,6 +16,7 @@ import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 import NotFound from '@/js/views/NotFound';
 import Map from '@/js/views/Map';
+import QRCode from './views/QRCode';
 
 Vue.use(VueRouter);
 
@@ -99,6 +100,11 @@ const router = new VueRouter({
             path: '/event/map/:event_id',
             name: 'Map',
             component: Map
+        },
+        {
+            path: '/profile/qr-code/:id',
+            name: 'QRCode',
+            component: QRCode
         },
         {
             path: '*',

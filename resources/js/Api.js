@@ -68,9 +68,9 @@ export default class API {
             }
             break;
         case 403:
-            // if (!await this.get('/api/user/login-check').data) localStorage.removeItem('user');
-            // error = res.data.message;
-            // window.location.href = window.location.origin;
+            if (!await this.get('/api/user/login-check').data) localStorage.removeItem('user');
+            error = res.data.message;
+            window.location.href = window.location.origin;
             break;
         case 404:
             error = 'Not found';

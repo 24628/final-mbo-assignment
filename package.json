@@ -39,6 +39,7 @@
         "ifvisible.js": "^1.0.6",
         "interactjs": "^1.9.13",
         "pdfjs-dist": "^2.3.200",
+        "qrcode.vue": "^1.7.0",
         "vue-router": "^3.1.6"
     }
 }
