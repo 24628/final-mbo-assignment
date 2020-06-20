@@ -18,9 +18,12 @@ export default {
     data () {
         return {
             rEventId: this.$route.params.id,
-            value: window.location.origin + '/print/badge/' + this.rEventId,
+            value: '',
             size: 300
         };
+    },
+    mounted(){
+        this.value = window.location.origin + '/print/badge/' + this.rEventId;
     }
 };
 </script>
