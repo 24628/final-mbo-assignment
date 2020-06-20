@@ -38,7 +38,7 @@
                             <li>Dubbel klik op een blok om deze te verwijderen</li>
                             <li>when color is selected and items is holden it will change that items color</li>
                             <li>when items is tapped it will take the see that as the selected item when the copy state is on true</li>
-                            <li>key ctrl + c start copy state</li>
+                            <li>key ctrl + shift links start copy state</li>
                             <li>key ctrl + v start copying items and copy state on false in case user mis clicks</li>
                             <li>key ctrl + z undo last item from copy state</li>
                             <li>key escape to stop the copy state and clear the copy item</li>

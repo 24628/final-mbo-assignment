@@ -1,6 +1,12 @@
 <template>
     <div>
         <div ref="mapHolder" class="map-holder" />
+
+        <map-modal
+            v-show="mapModal"
+            :item="mapItemModal"
+            @close="setModalState(`mapModal`)"
+        />
     </div>
 </template>
 
@@ -19,7 +25,9 @@ export default {
         return {
             allowedIn: true,
             event_id: this.$route.params.event_id,
-            mapData: null
+            mapData: null,
+            mapModal: false,
+            mapItemModal: null,
         };
     },
     methods: {
@@ -59,10 +67,8 @@ export default {
             if (!this.allowedIn) {
                 return;
             }
-            let item = this.mapData.items.filter(i => i.id === id)[0];
-            item = JSON.parse(JSON.stringify(item));
-            console.log(item);
-            // TODO: make modal?
+            this.mapItemModal = this.mapData.items.filter(i => i.id === id)[0];
+            this.setModalState('mapModal');
         },
         setModalState (state) {
             this[state] = !this[state];

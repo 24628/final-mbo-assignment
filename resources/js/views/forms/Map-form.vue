@@ -284,10 +284,16 @@ export default {
             }, 100);
         },
         startCopyPasteState (event) {
-            if (event.code === 'KeyC' && event.ctrlKey === true) {
+            if (event.code === 'KeyC'
+                && event.ctrlKey === true
+            ) {
                 this.copyState = true;
             }
-            if (event.code === 'KeyV' && event.ctrlKey === true && this.selectedItem.id !== undefined) {
+            if (event.code === 'KeyV'
+                && event.ctrlKey === true
+                && this.selectedItem.id !== undefined
+                && this.copyState === true
+            ) {
                 this.copyState = false; // set copy state on false and start pasting the items
                 if (this.timeoutPaste === undefined) {
                     this.items.push(this.generateItemObject(
@@ -299,16 +305,22 @@ export default {
                     ));
                     const container = this.$refs.mapHolder;
                     container.appendChild(this.createNewDomElement(
+                        this.counter,
                         this.selectedItem.style.backgroundColor,
                         this.selectedItem.style.width,
-                        this.selectedItem.style.height
+                        this.selectedItem.style.height,
+                        this.selectedItem.positionFromParent.x,
+                        this.selectedItem.positionFromParent.y,
                     ));
                     this.timeoutPaste = setTimeout(() => {
                         this.timeoutPaste = undefined;
                     }, 500);
                 }
             }
-            if (event.code === 'KeyZ' && event.ctrlKey === true) {
+            if (event.code === 'KeyZ'
+                && event.ctrlKey === true
+                && this.copyState === true
+            ) {
                 if (this.items[this.items.length - 1].id !== this.selectedItem.id && this.timeoutUndo === undefined) {
                     this.items.pop();
                     const container = this.$refs.mapHolder;
@@ -350,8 +362,12 @@ export default {
             });
         },
         updateItemUrl (event, itemId) {
+            console.log(event);
             this.items.forEach(el => {
-                if (el.id === itemId) el.url = event.target.value;
+                if (el.id === itemId) {
+                    console.log(el);
+                    el.url = event.target.value;
+                }
             });
         },
         generateItemObject (width = 150, height = 150, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {

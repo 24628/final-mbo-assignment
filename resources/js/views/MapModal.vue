@@ -32,8 +32,13 @@
                     id="modalDescription"
                     class="admin-modal-body"
                 >
-                    <slot name="body">
+                    <slot name="body" v-if="item !== null">
                         <h1>test</h1>
+
+                        {{item.url}}
+                        <div @click="openUrl">De stand ticket</div>
+                        <p>Wilt u zich inschrijven voor deze stand?</p>
+
                     </slot>
                 </section>
                 <footer class="admin-modal-footer">
@@ -56,16 +61,22 @@
 <script>
     export default {
         data () {
-            return {
-                item: null,
-            };
+            return {};
         },
         name: 'MapModal',
         props: ['item'],
-        methods: {
+        methods: {// TODO: make modal?
             close () {
                 this.$emit('close');
             },
+            openUrl(){
+                const pattern = /^((http|https|ftp):\/\/)/;
+                let url = this.item.url
+                if(!pattern.test(url)) url = "http://" + url;
+                const win = window.open(url, '_blank');
+                if (win) win.focus();
+                else alert('Please allow popups for this website');
+            }
         },
         watch: {
             item: async function (newVal, oldVal) {
