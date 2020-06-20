@@ -22,7 +22,7 @@ export default {
             size: 300
         };
     },
-    mounted(){
+    mounted () {
         this.value = window.location.origin + '/print/badge/' + this.rEventId;
     }
 };

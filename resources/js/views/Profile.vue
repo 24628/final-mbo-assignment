@@ -105,21 +105,28 @@
                                 {{ about }}
                             </p>
                             <textarea
-                                rows="10" cols="50"
                                 v-else
                                 v-model="about"
+                                rows="10"
+                                cols="50"
                                 class="profile-about-description"
                             />
                         </div>
                         <table class="table-qr">
                             <tr>
-                                <th colspan="3">Geregistreerde evenementen</th>
+                                <th colspan="3">
+                                    Geregistreerde evenementen
+                                </th>
                             </tr>
                             <div v-for="ev in registerEvents" :key="'event-r-' + ev.id">
                                 <tr>
                                     <td>{{ ev.event.name }}</td>
-                                    <td @click="viewEvent(ev.event_id)">Bekijk het evenement</td>
-                                    <td @click="viewQRCode(ev.id)">Bekijk je QR code</td>
+                                    <td @click="viewEvent(ev.event_id)">
+                                        Bekijk het evenement
+                                    </td>
+                                    <td @click="viewQRCode(ev.id)">
+                                        Bekijk je QR code
+                                    </td>
                                 </tr>
                             </div>
                         </table>
