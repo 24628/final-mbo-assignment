@@ -209,14 +209,14 @@ export default {
             this.items.push(this.generateItemObject());
             this.createNewDomElement();
         },
-        createNewDomElement (backgroundColorCodeItem = this.backgroundColorCodeItem, width = 150, height = 150, parentOffsetX = 0, parentOffsetY = 0) {
+        createNewDomElement (counter = this.counter, backgroundColorCodeItem = this.backgroundColorCodeItem, width = 150, height = 150, parentOffsetX = 0, parentOffsetY = 0) {
             const item = create({
                 selector: 'div',
-                id: `stand-id-${this.counter}`,
+                id: `stand-id-${counter}`,
                 styles: 'draggable',
                 children: create({
                     selector: 'p',
-                    html: `stand-id-${this.counter}`
+                    html: `stand-id-${counter}`
                 })
             });
 
@@ -404,14 +404,17 @@ export default {
             this.mapHeight = data.map.height;
             this.mapWidth = data.map.width;
             const items = data.items;
+            let counter = 1;
             items.forEach((el) => {
                 this.createNewDomElement(
+                    counter,
                     el.style.backgroundColor,
                     el.style.width,
                     el.style.height,
                     el.positionFromParent.x,
                     el.positionFromParent.y
                 );
+                counter++;
             });
             this.items = items;
             this.counter = items.length;

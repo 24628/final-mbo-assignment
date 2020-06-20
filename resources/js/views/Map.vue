@@ -8,8 +8,12 @@
 import API from '../Api';
 import interact from 'interactjs';
 import create from 'dom-create-element';
+import MapModal from './MapModal';
 
 export default {
+    components: {
+        MapModal,
+    },
     name: 'Map',
     data () {
         return {
@@ -55,11 +59,14 @@ export default {
             if (!this.allowedIn) {
                 return;
             }
-            let link = this.mapData.items.filter(i => i.id === id)[0].url;
-            link = JSON.parse(JSON.stringify(link));
-
+            let item = this.mapData.items.filter(i => i.id === id)[0];
+            item = JSON.parse(JSON.stringify(item));
+            console.log(item);
             // TODO: make modal?
-        }
+        },
+        setModalState (state) {
+            this[state] = !this[state];
+        },
     },
     async mounted () {
         this.showModal = this.showModal.bind(this);
@@ -87,9 +94,8 @@ export default {
         });
 
         const resp = await API.get('/api/map/register/');
-        if (resp.data) {
-            this.allowedIn = true;
-        }
+        this.allowedIn = resp.data;
+
         this.init();
     },
     beforeDestroy () {
