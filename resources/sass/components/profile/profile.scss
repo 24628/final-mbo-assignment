@@ -298,6 +298,23 @@ div.profile-container {
         display: block;
         margin-bottom: 5px;
     }
+    .table-qr{
+        font-size: 20px;
+        margin-top: 20px;
+        border-collapse: collapse;
+        margin-left: 80px;
+    }
+    .table-qr th{
+        text-align: center;
+        border-bottom: .5px solid $basic-gray;
+    }
+    .table-qr td{
+        padding: 5px;
+        border-bottom: .5px solid $basic-gray;
+    }
+    .table-qr td:not(:last-child){
+        border-right: .5px solid $basic-gray;
+    }
 }
 
 
@@ -391,6 +408,25 @@ div.profile-container {
         text-align: right;
 
     }
+    .profile-about-border{
+        width: 247px;
+        margin: 0 auto;
+    }
+    .table-qr{
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+    .table-qr th{
+        text-align: center;
+        border-bottom: .5px solid $basic-gray;
+    }
+    .table-qr td{
+        padding: 5px;
+        border-bottom: .5px solid $basic-gray;
+    }
+    .table-qr tr td:not(:last-child){
+        border-right: .5px solid $basic-gray;
+    }
     .profile-cv-input:active::before, .profile-cv-input:hover::before {
         background: $dark-gray;
         cursor: pointer;
@@ -472,8 +508,6 @@ div.profile-container {
         margin: 0 auto;
     }
     .profile-about-description {
-
-
         font-size: 15px;
     }
     textarea.profile-about-description {
@@ -594,6 +628,25 @@ div.profile-container {
         position: relative;
         padding-bottom: 20px;
     }
+    .profile-about-border{
+        width: 247px;
+        margin: 0 auto;
+    }
+    .table-qr{
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+    .table-qr th{
+        text-align: center;
+        border-bottom: .5px solid $basic-gray;
+    }
+    .table-qr td{
+        padding: 5px;
+        border-bottom: .5px solid $basic-gray;
+    }
+    .table-qr tr td:not(:last-child){
+        border-right: .5px solid $basic-gray;
+    }
     .profile-edit {
         text-align: right;
         padding-right: 15px;
@@ -704,10 +757,6 @@ div.profile-container {
         padding-top: 10px;
     }
     .profile-main-wrapper {
-    }
-    .profile-about {
-        width: 247px;
-        margin: 0 auto;
     }
     .profile-top {
         font-size: 20px;
