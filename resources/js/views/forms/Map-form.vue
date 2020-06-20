@@ -328,7 +328,6 @@ export default {
         },
         setSelectedItem (event) {
             this.selectedItem = this.items.find(el => el.id === event.detail.currentTarget.id);
-            console.log(this.selectedItem);
         },
         updateItemWidth (event, itemId) {
             const item = document.getElementById(itemId);
@@ -397,7 +396,7 @@ export default {
         },
         async fillMapIfNeeded () {
             const res = await API.get('/api/map/' + this.$route.params.event_id);
-            if (res.data === 'Error') console.log(res);
+            if (res.data === 'Error') return;
             if (!res.data.json) return;
             this.mapId = res.data.id;
             this.mapExist = true;

@@ -145,4 +145,18 @@ class EventController extends Controller
 
         return response()->json(['message' => 'successfully subscribed to the event'], 200);
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function tickets($id){
+
+        $tickets = RegistrationEvents::query()
+            ->where('event_id', $id)
+            ->get()
+            ->count();
+
+        return response()->json($tickets, 200);
+    }
 }

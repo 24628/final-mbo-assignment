@@ -106,7 +106,6 @@ export default {
 
             const response = await API.post(data, '/api/admin/search');
             this.users = response.data.message;
-            console.log(this.users);
 
             e.preventDefault();
         },

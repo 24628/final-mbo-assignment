@@ -38,7 +38,6 @@ export default {
     // components: {loading},
     methods: {
         checkDate () {
-            console.log(new Date());
             this.boolean = true;
             this.useless();
         },

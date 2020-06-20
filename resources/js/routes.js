@@ -17,6 +17,7 @@ import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 import NotFound from '@/js/views/NotFound';
 import Map from '@/js/views/Map';
 import QRCode from './views/QRCode';
+import printBadge from './views/PrintBadge';
 
 Vue.use(VueRouter);
 
@@ -105,6 +106,11 @@ const router = new VueRouter({
             path: '/profile/qr-code/:id',
             name: 'QRCode',
             component: QRCode
+        },
+        {
+            path: '/print/badge/:id',
+            name: 'printBadge',
+            component: printBadge
         },
         {
             path: '*',

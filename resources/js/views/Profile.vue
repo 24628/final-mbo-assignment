@@ -115,7 +115,7 @@
                             <tr>
                                 <th colspan="3">Geregistreerde evenementen</th>
                             </tr>
-                            <div v-for="ev in registerEvents" >
+                            <div v-for="ev in registerEvents" :key="'event-r-' + ev.id">
                                 <tr>
                                     <td>{{ ev.event.name }}</td>
                                     <td @click="viewEvent(ev.event_id)">Bekijk het evenement</td>
@@ -309,11 +309,11 @@ export default {
         this.roles = roles.data;
     },
     methods: {
-        viewEvent(id){
-            window.location.href = window.location.origin + "/event/" + id;
+        viewEvent (id) {
+            window.location.href = window.location.origin + '/event/' + id;
         },
-        viewQRCode(id){
-            window.location.href = window.location.origin + "/profile/qr-code/" + id;
+        viewQRCode (id) {
+            window.location.href = window.location.origin + '/profile/qr-code/' + id;
         },
         emptyCV () {
             this.$refs.cvHolder.innerHTML = '';

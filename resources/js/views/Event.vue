@@ -469,11 +469,14 @@ export default {
         if (!!this.$user.data && !!this.$user.data.name) {
             await this.getSubscripedData();
         }
+
+        const r = await API.get('/api/event/tickets/' + this.eventId);
+        const data = r.data;
+        this.currentTickets = data;
     },
     methods: {
         async updateEvent () {
             this.updating = 1;
-            console.log(this.updating);
             const selectedSpeakers = this.selectedSpeakers;
             const selectedKeyNotes = this.selectedKeyNotes;
             await this.subscribeEvent(selectedSpeakers, selectedKeyNotes);
@@ -485,7 +488,6 @@ export default {
             const res = await API.get(
                 '/api/is-subscribed/' + this.$route.params.id
             );
-            console.log(res);
             if (res.data.event_id) {
                 this.subscribed = true;
                 const selected = JSON.parse(res.data.item_ids);
@@ -597,7 +599,6 @@ export default {
         },
         viewMap () {
             this.$router.replace('/event/map/' + this.eventId);
-            console.log('map');
         }
     },
     data () {
@@ -608,7 +609,7 @@ export default {
             subscribed: false,
             selectedSpeakers: [],
             selectedKeyNotes: [],
-            currentTickets: 135
+            currentTickets: null
         };
     }
 };

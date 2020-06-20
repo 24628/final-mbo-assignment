@@ -60,4 +60,14 @@ class UserPolicy
     public function AdminUser(User $user) {
         return in_array(Permissions::__ADMIN_UPDATE_USER__, json_decode($user->role->permissions, 1));
     }
+
+    /**
+     * Determine whether the user can view any models.
+     *
+     * @param User $user
+     * @return mixed
+     */
+    public function print(User $user) {
+        return in_array(Permissions::__PRINT_BADGE__, json_decode($user->role->permissions, 1));
+    }
 }

@@ -134,4 +134,24 @@ class UserController extends Controller
 
         return response()->json($q, 200);
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function print($id){
+
+        $this->authorize('print', User::class);
+
+        $q = RegistrationEvents::query()
+            ->where('id', $id)
+            ->with('event')
+            ->with('user')
+            ->with('user.role')
+            ->with('user.profile')
+            ->first();
+
+        return response()->json($q, 200);
+    }
 }

@@ -1,32 +1,28 @@
 <template>
     <div class="qr-container">
-            qr code generator
-        <qrcode-vue :value="value" :size="size" level="H"></qrcode-vue>
+        <p class="qr-title">
+            Uw ticket laat dit scannen bij ingang evenement
+        </p>
+        <qrcode-vue :value="value" :size="size" level="H" />
     </div>
 </template>
 
 <script>
-    import QrcodeVue from 'qrcode.vue'
+import QrcodeVue from 'qrcode.vue';
 
-    export default {
-        name: 'QRCode',
-        components: {
-            QrcodeVue,
-        },
-        data () {
-            return {
-                rEventId: this.$route.params.id,
-                value: 'https://example.com',
-                size: 300,
-            };
-        },
-        methods: {
-
-        },
-        mounted () {
-
-        }
-    };
+export default {
+    name: 'QRCode',
+    components: {
+        QrcodeVue
+    },
+    data () {
+        return {
+            rEventId: this.$route.params.id,
+            value: window.location.origin + '/print/badge/' + this.rEventId,
+            size: 300
+        };
+    }
+};
 </script>
 
 <style>
@@ -36,5 +32,11 @@
         flex-direction: column;
         align-items: center;
         margin-top: 100px;
+    }
+
+    .qr-title {
+        color: whitesmoke;
+        font-size: large;
+        margin: 20px 0;
     }
 </style>

@@ -191,8 +191,5 @@ export default {
             e.preventDefault();
         }
     },
-    mounted () {
-        console.log(this.id);
-    }
 };
 </script>
