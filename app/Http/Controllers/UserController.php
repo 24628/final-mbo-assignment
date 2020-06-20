@@ -147,6 +147,7 @@ class UserController extends Controller
         $q = RegistrationEvents::query()
             ->where('id', $id)
             ->with('event')
+            ->with('event.settings')
             ->with('user')
             ->with('user.role')
             ->with('user.profile')
