@@ -273,7 +273,6 @@ export default {
             user_id: null,
             profileExist: false,
             profileId: null,
-            role_id: null,
             registerEvents: []
         };
     },
@@ -384,7 +383,7 @@ export default {
             let data = {};
             const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company'];
             const roleData = {
-                id: this.role_id,
+                id: this.role,
                 user_id: this.user_id
             };
             pObj.forEach((i) => {
