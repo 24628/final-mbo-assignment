@@ -44,11 +44,11 @@ const router = new VueRouter({
             name: 'profile',
             component: Profile
         },
-        {
-            path: '/search',
-            name: 'search',
-            component: Search
-        },
+        // {
+        //     path: '/search',
+        //     name: 'search',
+        //     component: Search
+        // },
         {
             path: '/form/event',
             name: 'event-form',

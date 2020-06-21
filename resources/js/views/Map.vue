@@ -18,7 +18,7 @@ import MapModal from './MapModal';
 
 export default {
     components: {
-        MapModal,
+        MapModal
     },
     name: 'Map',
     data () {
@@ -27,7 +27,7 @@ export default {
             event_id: this.$route.params.event_id,
             mapData: null,
             mapModal: false,
-            mapItemModal: null,
+            mapItemModal: null
         };
     },
     methods: {
@@ -67,7 +67,7 @@ export default {
         showModal (id) {
             if (!this.allowedIn) return;
             this.mapItemModal = this.mapData.items.filter(i => i.id === id)[0];
-            if(this.mapItemModal.user_id !== null) {
+            if (this.mapItemModal.user_id !== null) {
                 alert('deze stand is bezet');
                 return;
             }
@@ -76,21 +76,21 @@ export default {
         setModalState (state) {
             this[state] = !this[state];
         },
-        async subscribe(event){
-            if(event.detail === false) return;
+        async subscribe (event) {
+            if (event.detail === false) return;
             const user = JSON.parse(localStorage.getItem('user'));
             this.mapItemModal.user_id = user.id;
             this.mapData.items.forEach((el) => {
-                if(el.id === this.mapItemModal.id) {
+                if (el.id === this.mapItemModal.id) {
                     el.user_id = user.id;
                 }
-            })
+            });
 
             const res = await API.post(
-                {map_data: JSON.stringify(this.mapData)},
+                { map_data: JSON.stringify(this.mapData) },
                 '/api/event/map/subscribe/' + this.event_id,
                 true
-            )
+            );
             console.log(res);
         }
     },

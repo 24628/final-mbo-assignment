@@ -284,15 +284,15 @@ export default {
             }, 100);
         },
         startCopyPasteState (event) {
-            if (event.code === 'KeyC'
-                && event.ctrlKey === true
+            if (event.code === 'KeyC' &&
+                event.ctrlKey === true
             ) {
                 this.copyState = true;
             }
-            if (event.code === 'KeyV'
-                && event.ctrlKey === true
-                && this.selectedItem.id !== undefined
-                && this.copyState === true
+            if (event.code === 'KeyV' &&
+                event.ctrlKey === true &&
+                this.selectedItem.id !== undefined &&
+                this.copyState === true
             ) {
                 this.copyState = false; // set copy state on false and start pasting the items
                 if (this.timeoutPaste === undefined) {
@@ -310,16 +310,16 @@ export default {
                         this.selectedItem.style.width,
                         this.selectedItem.style.height,
                         this.selectedItem.positionFromParent.x,
-                        this.selectedItem.positionFromParent.y,
+                        this.selectedItem.positionFromParent.y
                     ));
                     this.timeoutPaste = setTimeout(() => {
                         this.timeoutPaste = undefined;
                     }, 500);
                 }
             }
-            if (event.code === 'KeyZ'
-                && event.ctrlKey === true
-                && this.copyState === true
+            if (event.code === 'KeyZ' &&
+                event.ctrlKey === true &&
+                this.copyState === true
             ) {
                 if (this.items[this.items.length - 1].id !== this.selectedItem.id && this.timeoutUndo === undefined) {
                     this.items.pop();

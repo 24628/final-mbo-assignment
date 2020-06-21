@@ -32,14 +32,20 @@
                     id="modalDescription"
                     class="admin-modal-body"
                 >
-                    <slot name="body" v-if="item !== null">
+                    <slot v-if="item !== null" name="body">
                         <h1>test</h1>
 
-                        {{item.url}}
-                        <div @click="openUrl">De stand ticket</div>
+                        {{ item.url }}
+                        <div @click="openUrl">
+                            De stand ticket
+                        </div>
                         <p>Wilt u zich inschrijven voor deze stand?</p>
-                        <div @click="subscribe(true)">Ja</div>
-                        <div @click="subscribe(false)">Nee</div>
+                        <div @click="subscribe(true)">
+                            Ja
+                        </div>
+                        <div @click="subscribe(false)">
+                            Nee
+                        </div>
                     </slot>
                 </section>
                 <footer class="admin-modal-footer">
@@ -60,33 +66,33 @@
 </template>
 
 <script>
-    export default {
-        data () {
-            return {};
+export default {
+    data () {
+        return {};
+    },
+    name: 'MapModal',
+    props: ['item'],
+    methods: {
+        close () {
+            this.$emit('close');
         },
-        name: 'MapModal',
-        props: ['item'],
-        methods: {
-            close () {
-                this.$emit('close');
-            },
-            openUrl(){
-                const pattern = /^((http|https|ftp):\/\/)/;
-                let url = this.item.url
-                if(!pattern.test(url)) url = "http://" + url;
-                const win = window.open(url, '_blank');
-                if (win) win.focus();
-                else alert('Please allow popups for this website');
-            },
-            subscribe(boolean){
-                window.dispatchEvent(new CustomEvent('subscribe-boolean', { detail: boolean }));
-                this.close();
-            }
+        openUrl () {
+            const pattern = /^((http|https|ftp):\/\/)/;
+            let url = this.item.url;
+            if (!pattern.test(url)) url = 'http://' + url;
+            const win = window.open(url, '_blank');
+            if (win) win.focus();
+            else alert('Please allow popups for this website');
         },
-        watch: {
-            item: async function (newVal, oldVal) {
-                console.log(this.item);
-            }
-        },
-    };
+        subscribe (boolean) {
+            window.dispatchEvent(new CustomEvent('subscribe-boolean', { detail: boolean }));
+            this.close();
+        }
+    },
+    watch: {
+        item: async function (newVal, oldVal) {
+            console.log(this.item);
+        }
+    }
+};
 </script>

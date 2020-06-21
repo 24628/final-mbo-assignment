@@ -40,9 +40,9 @@
                 <button v-else @click="logout">
                     Uitloggen
                 </button>
-                <router-link v-if="loggedIn" to="/search">
-                    Profiel zoeken
-                </router-link>
+<!--                <router-link v-if="loggedIn" to="/search">-->
+<!--                    Profiel zoeken-->
+<!--                </router-link>-->
             </div>
         </div>
     </div>
