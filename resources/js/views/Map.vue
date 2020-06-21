@@ -65,16 +65,18 @@ export default {
             container.appendChild(item);
         },
         showModal (id) {
-            if (!this.allowedIn) {
+            if (!this.allowedIn) return;
+            this.mapItemModal = this.mapData.items.filter(i => i.id === id)[0];
+            if(this.mapItemModal.user_id !== null) {
+                alert('deze stand is bezet');
                 return;
             }
-            this.mapItemModal = this.mapData.items.filter(i => i.id === id)[0];
             this.setModalState('mapModal');
         },
         setModalState (state) {
             this[state] = !this[state];
         },
-        subscribe(event){
+        async subscribe(event){
             if(event.detail === false) return;
             const user = JSON.parse(localStorage.getItem('user'));
             this.mapItemModal.user_id = user.id;
@@ -83,7 +85,13 @@ export default {
                     el.user_id = user.id;
                 }
             })
-            console.log(this.mapData);
+
+            const res = await API.post(
+                {map_data: JSON.stringify(this.mapData)},
+                '/api/event/map/subscribe/' + this.event_id,
+                true
+            )
+            console.log(res);
         }
     },
     async mounted () {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Http\Requests\MapSubscribeValidatonRequest;
 use App\Map;
 use App\Rules\EventExistValidator;
 use App\User;
@@ -131,5 +132,24 @@ class MapController extends Controller
 
         $user = User::findOrFail(Auth::id());
         return response()->json($user->can('register', Map::class), 200);
+    }
+
+    /**
+     * @param MapSubscribeValidatonRequest $request
+     * @param Event $event
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function subscribe(MapSubscribeValidatonRequest $request, Event $event){
+
+        $this->authorize('register', Map::class);
+
+        $event = Event::findOrFail($event->id);
+        $map = Map::query()->where('event_id', $event->id)->first();
+
+        $map->json = $request->map_data;
+        $map->update();
+
+        return response()->json(['message'=> 'success'], 200);
     }
 }
