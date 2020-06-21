@@ -289,7 +289,6 @@ export default {
         this.user_id = data.id;
         const rE = await API.get('/api/register/event/user/' + this.user_id);
         this.registerEvents = rE.data;
-        console.log(this.registerEvents);
         if (data.name) {
             this.name = data.name;
         }
