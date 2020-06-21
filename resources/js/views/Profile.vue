@@ -54,7 +54,7 @@
                             <option
                                 v-for="userrole in roles"
                                 :key="userrole.id"
-                                :value="userrole.id"
+                                :value="userrole.role_name"
                             >
                                 {{ userrole.role_name }}
                             </option>
