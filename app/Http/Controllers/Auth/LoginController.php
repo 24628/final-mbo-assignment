@@ -58,21 +58,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validateLogin($request);
-        $userCheck = User::query()->where('email',$request->email)->first();
 
         if ($this->attemptLogin($request)) {
-            if($userCheck->email_verified_at !== NULL){
-                $user = $this->guard()->user();
-                $user->generateToken();
-                return response()->json([
-                    'data' => $user->toArray(),
-                ]);
-            }
-
-            return response()->json(['error' => 'Please Verify Email'], 403);
+            $user = $this->guard()->user();
+            $user->generateToken();
+            return response()->json([
+                'data' => $user->toArray(),
+            ]);
         }
 
-        return response()->json(['message' => 'Login failed'], 401);   
+        return response()->json(['message' => 'Login failed'], 401);
     }
 
     /**
