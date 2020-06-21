@@ -11,7 +11,7 @@
                 {{ data.user.role.role_name }}
             </div>
             <div class="badge-date">
-                {{ data.event.settings.date_start }}
+                {{ formatDate(data.event.settings) }}
             </div>
             <div class="badge-event-loc">
                 {{ data.event.settings.location }}
@@ -34,7 +34,19 @@ export default {
             data: null
         };
     },
-    methods: {},
+    methods: {
+        formatDate (settings) {
+            const dateStart = new Date(settings.date_start).getTime();
+            const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'october', 'november', 'december'];
+            return stringifyDate(dateStart);
+
+            function stringifyDate (date) {
+                date = new Date(date);
+                const formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+                return formattedDate;
+            }
+        }
+    },
     async mounted () {
         const res = await API.get('/api/print/badge/' + this.rEventId);
         const data = res.data;
