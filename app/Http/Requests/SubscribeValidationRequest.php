@@ -25,7 +25,6 @@ class SubscribeValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'event_id' => ['required', 'integer', new EventExistValidator],
             'item_ids' => ['required', 'string']
         ];
     }

@@ -94,12 +94,11 @@ class EventController extends Controller
 
     /**
      * @param SubscribeValidationRequest $request
+     * @param Event $event
      * @return JsonResponse
      */
-    public function subscribe(SubscribeValidationRequest $request)
+    public function subscribe(SubscribeValidationRequest $request, Event $event)
     {
-        $event = Event::findOrFail($request->event_id);
-
         $q = RegistrationEvents::query()
             ->where('user_id', Auth::id())
             ->where('event_id', $event->id)

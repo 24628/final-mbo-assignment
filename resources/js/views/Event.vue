@@ -540,10 +540,10 @@ export default {
             ];
             const res = await API.post(
                 {
-                    event_id: this.$route.params.id,
                     item_ids: JSON.stringify(selectedIDs)
                 },
-                '/api/event/subscribe/'
+                '/api/event/subscribe/' + this.$route.params.id,
+                true
             );
             if (res.status === 200) {
                 this.subscribed = true;
