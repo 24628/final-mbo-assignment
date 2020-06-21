@@ -38,7 +38,8 @@
                         {{item.url}}
                         <div @click="openUrl">De stand ticket</div>
                         <p>Wilt u zich inschrijven voor deze stand?</p>
-
+                        <div @click="subscribe(true)">Ja</div>
+                        <div @click="subscribe(false)">Nee</div>
                     </slot>
                 </section>
                 <footer class="admin-modal-footer">
@@ -65,7 +66,7 @@
         },
         name: 'MapModal',
         props: ['item'],
-        methods: {// TODO: make modal?
+        methods: {
             close () {
                 this.$emit('close');
             },
@@ -76,6 +77,10 @@
                 const win = window.open(url, '_blank');
                 if (win) win.focus();
                 else alert('Please allow popups for this website');
+            },
+            subscribe(boolean){
+                window.dispatchEvent(new CustomEvent('subscribe-boolean', { detail: boolean }));
+                this.close();
             }
         },
         watch: {
