@@ -142,7 +142,7 @@ class EventController extends Controller
 
         $subscription->delete();
 
-        return response()->json(['message' => 'successfully subscribed to the event'], 200);
+        return response()->json(['message' => 'successfully unsubscribed to the event'], 200);
     }
 
     /**
