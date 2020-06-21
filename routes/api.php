@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('/print/badge/{id}', 'UserController@print');
     Route::get('/is-subscribed/{event}', 'UserController@isSubscribed');
     Route::get('/map/register/', 'MapController@isAllowedToRegister');
+    Route::patch('/event/map/subscribe/{event}', 'MapController@subscribe');
 
     Route::post('logout', 'Auth\LoginController@logout');
     Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
