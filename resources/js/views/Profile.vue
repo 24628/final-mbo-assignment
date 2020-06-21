@@ -47,14 +47,10 @@
                         <p v-if="!edit" class="profile-role">
                             {{ role_name }}
                         </p>
-                        <select v-else v-model="role_name" class="form-text-input">
-                            <option :value="roles.id" selected disabled>
-                                Uw rol is {{ role_name }}
-                            </option>
+                        <select v-else v-model="role_id" class="form-text-input">
                             <option
                                 v-for="userrole in roles"
-                                :key="userrole.id"
-                                :value="userrole.id"
+                                v-bind:value="userrole.id"
                             >
                                 {{ userrole.role_name }}
                             </option>
@@ -277,6 +273,7 @@ export default {
             user_id: null,
             profileExist: false,
             profileId: null,
+            role_id: null,
             registerEvents: []
         };
     },
@@ -307,9 +304,10 @@ export default {
         } else {
             this.profileExist = false;
         }
-        if (data.role) {
-            this.role_name = data.role.role_name;
-        }
+
+        this.role_name = data.role.role_name;
+        this.role_id = data.role.id;
+
         const roles = await API.get('/api/selectable-roles');
         if (!roles.data) return (this.roles = 'Er zijn geen selecteerbare rollen.');
         this.roles = roles.data;
@@ -386,7 +384,7 @@ export default {
             let data = {};
             const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company'];
             const roleData = {
-                id: this.role,
+                id: this.role_id,
                 user_id: this.user_id
             };
             pObj.forEach((i) => {
@@ -400,9 +398,9 @@ export default {
             } else {
                 await API.post(data, '/api/profile');
             }
-            if (this.role) {
-                await API.post(roleData, '/api/selectable-role-edit', true);
-            }
+
+            await API.post(roleData, '/api/selectable-role-edit', true);
+
             await API.post({ name: this.name }, '/api/user/name/' + this.user_id, true);
             this.edit = false;
         }
