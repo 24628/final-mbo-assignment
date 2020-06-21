@@ -51,7 +51,6 @@ export default {
         const res = await API.get('/api/print/badge/' + this.rEventId);
         const data = res.data;
         this.data = res.data;
-        console.log(data);
     }
 };
 </script>
