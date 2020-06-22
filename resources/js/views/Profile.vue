@@ -63,12 +63,16 @@
                                 {{ company }}
                             </p>
                         </div>
+<<<<<<< HEAD
                         <div v-if="!!company_func && !edit && role_name !== 'Werkzoekende'">
+=======
+                        <div v-if="!!comp_function && !edit">
+>>>>>>> 1f22720fe1cdc7f7074bb8fd983f84254e7fdc92
                             <p class="profile-function">
                                 Functie
                             </p>
                             <p class="profile-company-name">
-                                {{ company_func }}
+                                {{ comp_function }}
                             </p>
                         </div>
                         <div v-if="edit && role_name !== 'Werkzoekende'">
@@ -81,12 +85,12 @@
                                 type="text"
                                 class="profile-name-edit"
                             >
-                            <label class="profile-function" for="company_func">
+                            <label class="profile-function" for="comp_function">
                                 Functie
                             </label>
                             <input
-                                id="company-func"
-                                v-model="company_func"
+                                id="comp_function"
+                                v-model="comp_function"
                                 type="text"
                                 class="profile-name-edit"
                             >
@@ -291,7 +295,7 @@ export default {
             profileExist: false,
             profileId: null,
             registerEvents: [],
-            company_func: null,
+            comp_function: null
         };
     },
     async mounted () {
@@ -318,6 +322,7 @@ export default {
             this.phonenumber = data.profile.phonenumber;
             this.contact_email = data.profile.contact_email;
             this.company = data.profile.company;
+            this.comp_function = data.profile.comp_function;
         } else {
             this.profileExist = false;
         }
@@ -399,7 +404,7 @@ export default {
         },
         async editProfile () {
             let data = {};
-            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company'];
+            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company', 'comp_function'];
             const roleData = {
                 id: this.role_id,
                 user_id: this.user_id

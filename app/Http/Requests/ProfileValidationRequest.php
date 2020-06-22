@@ -29,6 +29,7 @@ class ProfileValidationRequest extends FormRequest
             'about' => ['string'],
             'image' => ['string'],
             'company' => ['string'],
+            'comp_function' => ['string'],
             'facebook' => ['string', new UrlValidator],
             'twitter' => ['string', new UrlValidator],
             'linkedin' => ['string', new UrlValidator],
