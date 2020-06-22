@@ -50,7 +50,7 @@
                         <select v-else v-model="role_id" class="form-text-input">
                             <option
                                 v-for="userrole in roles"
-                                v-bind:value="userrole.id"
+                                :value="userrole.id"
                             >
                                 {{ userrole.role_name }}
                             </option>
@@ -74,7 +74,7 @@
                                 class="profile-name-edit"
                             >
                         </div>
-                        <hr v-if="!edit" class="profile-line-phone">
+                        <hr v-if="!edit && role_name === 'Werk zoekende'" class="profile-line-phone">
                         <input
                             v-if="edit"
                             ref="cv"

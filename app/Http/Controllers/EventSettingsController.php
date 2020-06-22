@@ -80,7 +80,7 @@ class EventSettingsController extends Controller
     {
         $this->authorize('write', EventSettings::class);
 
-        $event = Event::findOrFail($id);
+        $event = EventSettings::findOrFail($id);
         $event->update($request->all());
 
         return response()->json(['message' => 'Event Settings updated successfully'], 200);

@@ -17,7 +17,7 @@
                 {{ data.event.settings.location }}
             </div>
             <!-- <img class="badge-image" src="/img/badge-inspiratiedag.png" alt=""> -->
-            <div class="badge-background"></div>
+            <div class="badge-background" />
             <div class="badge-color" :style="{backgroundColor: data.user.role.color}" />
         </div>
     </div>

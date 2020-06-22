@@ -22,7 +22,7 @@
                         >
                             <h1
                                 class="event-titlebar-title"
-                                v-bind:title="data.name"
+                                :title="data.name"
                                 v-text="data.name"
                             />
                         </div>
@@ -413,7 +413,7 @@
                             Je hebt je al ingeschreven voor dit evenement, je kan alsnog je selectie bijwerken of uitschrijven van het evenement
                         </div>
                         <button class="event-modal-signup-button" :disabled="!!updating" @click="updateEvent">
-                            selectie bijwerken
+                            bijwerken
                         </button>
                         <button class="event-modal-signup-button" :disabled="!!updating" @click="unsubscribeEvent">
                             uitschrijven
@@ -551,20 +551,7 @@ export default {
             }
         },
         formatDate (settings) {
-            const dateStart = new Date(settings.date_start).getTime();
-            const dateEnd = new Date(settings.date_end).getTime();
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            if (dateStart + 1000 * 60 * 60 * 24 > dateEnd) {
-                return stringifyDate(dateStart);
-            } else {
-                return stringifyDate(dateStart) + ' tot ' + stringifyDate(dateEnd);
-            }
-
-            function stringifyDate (date) {
-                date = new Date(date);
-                const formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
-                return formattedDate;
-            }
+            return this.$formatDate(false, settings.date_start, settings.date_end);
         },
         getTime (dateObj) {
             const date = new Date(dateObj);

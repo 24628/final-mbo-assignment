@@ -33,7 +33,7 @@
                 >
                 <hr>
                 <div v-if="selectedItem.id">
-                    <p>{{selectedItem.id}}</p>
+                    <p>{{ selectedItem.id }}</p>
                     <label for="item_width">Zet Item Breedte in meters</label>
                     <input
                         id="item_width"
@@ -62,7 +62,7 @@
                         koppel gebruiker aan stand
                     </div>
                     <div @click="toggleStandAvailableSettings(selectedItem.id)">
-                        Stand bezet [ {{selectedItem.available}} ]
+                        Stand bezet [ {{ selectedItem.available }} ]
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@
         />
 
         <pair-stand-with-user
-            :id="selectedItem.id"
             v-show="pairStandModel"
+            :id="selectedItem.id"
             @close="setModalState(`pairStandModel`)"
         />
     </div>
@@ -105,7 +105,7 @@ const meterToPixel = 50;
 export default {
     components: {
         ModalMapForm,
-        PairStandWithUser,
+        PairStandWithUser
     },
     data () {
         return {
@@ -194,20 +194,20 @@ export default {
             container.style.minWidth = this.map.width + 'px';
             container.style.minHeight = this.map.height + 'px';
         },
-        pairUser(event){
+        pairUser (event) {
             console.log(event);
             const stand_id = event.detail.stand_id;
             const user_id = event.detail.user_id;
             this.items.forEach((obj, index) => {
-                if(stand_id === obj.id) {
+                if (stand_id === obj.id) {
                     this.items[index].available = true;
                     this.items[index].user_id = user_id;
                 }
             });
         },
-        toggleStandAvailableSettings(id){
+        toggleStandAvailableSettings (id) {
             this.items.forEach((obj, index) => {
-                if(id === obj.id) {
+                if (id === obj.id) {
                     this.items[index].available = !this.items[index].available;
                     console.log(obj.available);
                 }

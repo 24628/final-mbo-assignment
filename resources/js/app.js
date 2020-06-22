@@ -20,6 +20,37 @@ user.install = function () {
 
 Vue.use(user);
 
+// Global date Format fucntion
+const formatDate = (hasTime, date_start, date_end = null) => {
+    const dateStart = new Date(date_start).getTime();
+    const dateEnd = new Date(date_end).getTime();
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    if (dateEnd !== null && dateStart + 1000 * 60 * 60 * 24 > dateEnd) {
+        return stringifyDate(dateStart);
+    } else {
+        return stringifyDate(dateStart) + '/' + stringifyDate(dateEnd);
+    }
+
+    function stringifyDate (date) {
+        date = new Date(date);
+        let formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+        if (hasTime) {
+            formattedDate += ' ';
+            let hours = date.getHours() + '';
+            let minutes = date.getMinutes() + '';
+            if (hours.length === 1) {
+                hours = '0' + hours;
+            }
+            if (minutes.length === 1) {
+                minutes = '0' + minutes;
+            }
+            formattedDate += hours + ':' + minutes;
+        }
+        return formattedDate;
+    }
+};
+Vue.prototype.$formatDate = formatDate;
+
 Route.beforeEach((to, from, next) => {
     const loginData = JSON.parse(localStorage.getItem('user'));
     if (loginData !== null) {

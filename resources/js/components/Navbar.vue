@@ -2,6 +2,12 @@
     <div>
         <div class="navbar">
             <div class="navbar-inner">
+                <div
+                    v-if="!loggedIn"
+                    class="button-register"
+                    @click="router.replace('/user-registration')">
+                    Regristreer
+                </div>
                 <div v-if="loggedIn" class="navbar-user">
                     Welkom
                     <span class="navbar-user-name">{{ $user.data.name }}</span>!
@@ -40,9 +46,9 @@
                 <button v-else @click="logout">
                     Uitloggen
                 </button>
-<!--                <router-link v-if="loggedIn" to="/search">-->
-<!--                    Profiel zoeken-->
-<!--                </router-link>-->
+                <!--                <router-link v-if="loggedIn" to="/search">-->
+                <!--                    Profiel zoeken-->
+                <!--                </router-link>-->
             </div>
         </div>
     </div>
@@ -68,8 +74,24 @@ export default {
     },
     data () {
         return {
+            router: this.$router,
             sidebarIsOpen: false
         };
     }
 };
 </script>
+
+<style>
+    .button-register {
+        padding: 12px 22px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        background-color: #1F1F1F;
+        color: #C1C1C1;
+        border: solid 2px #767676;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+</style>
