@@ -36,9 +36,11 @@
   .event-titlebar-title {
     margin: 0;
     color: var(--theme-color);
-    font-size: $font-size-enormous;
-    width: 55%;
+    font-size: 50px;
+    width: 100%;
     line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
     @media (max-width: ($tablet-breakpoint - 1)) {
       width: unset;
       padding-bottom: .25em;

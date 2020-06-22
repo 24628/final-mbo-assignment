@@ -16,7 +16,8 @@
             <div class="badge-event-loc">
                 {{ data.event.settings.location }}
             </div>
-            <img class="badge-image" src="/img/badge-inspiratiedag.png" alt="">
+            <!-- <img class="badge-image" src="/img/badge-inspiratiedag.png" alt=""> -->
+            <div class="badge-background"></div>
             <div class="badge-color" :style="{backgroundColor: data.user.role.color}" />
         </div>
     </div>
@@ -49,7 +50,6 @@ export default {
     },
     async mounted () {
         const res = await API.get('/api/print/badge/' + this.rEventId);
-        const data = res.data;
         this.data = res.data;
     }
 };
@@ -115,5 +115,10 @@ export default {
         top: 500px;
         width: inherit;
         text-align: center;
+    }
+    .badge-background{
+        background-color:#c3d111;
+        width: 608px;
+        height: 880px;
     }
 </style>
