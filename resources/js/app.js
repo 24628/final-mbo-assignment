@@ -54,6 +54,7 @@ Vue.prototype.$formatDate = formatDate;
 Route.beforeEach((to, from, next) => {
     const loginData = JSON.parse(localStorage.getItem('user'));
     const show = JSON.parse(localStorage.getItem('loggedIn'));
+    window.scrollTo(0, 0);
     if (show) {
         Api.generateHtml('successfully registered in');
         localStorage.removeItem('loggedIn');
