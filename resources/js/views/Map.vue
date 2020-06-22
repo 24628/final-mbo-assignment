@@ -72,7 +72,6 @@ export default {
                     this.setModalState('mapModal');
                 }
             }
-            console.log('test');
         },
         setModalState (state) {
             this[state] = !this[state];
