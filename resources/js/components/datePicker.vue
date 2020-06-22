@@ -149,11 +149,11 @@ export default {
     methods: {
         updateValue () {
             let date = new Date(0);
-            date.setUTCFullYear(this.date.current.year, this.date.current.month, this.date.current.day);
+            date.setFullYear(this.date.current.year, this.date.current.month, this.date.current.day);
             date.setMonth(this.date.current.month);
-            date.setUTCDate(this.date.current.day);
-            date.setUTCHours(this.getHours(this.time));
-            date.setUTCMinutes(this.getMinutes(this.time));
+            date.setDate(this.date.current.day);
+            date.setHours(this.getHours(this.time));
+            date.setMinutes(this.getMinutes(this.time));
             this.value = this.$formatDate(true,date);
             console.log('----');
             console.log(this.value);
