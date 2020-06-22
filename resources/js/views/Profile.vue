@@ -63,11 +63,8 @@
                                 {{ company }}
                             </p>
                         </div>
-<<<<<<< HEAD
-                        <div v-if="!!company_func && !edit && role_name !== 'Werkzoekende'">
-=======
-                        <div v-if="!!comp_function && !edit">
->>>>>>> 1f22720fe1cdc7f7074bb8fd983f84254e7fdc92
+
+                        <div v-if="!!comp_function && !edit && role_name !== 'Werkzoekende'">
                             <p class="profile-function">
                                 Functie
                             </p>
