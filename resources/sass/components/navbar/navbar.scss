@@ -11,6 +11,7 @@
 
     .navbar-inner {
         position: relative;
+        padding-right: $padding-medium;
         margin: $padding-medium;
         height: calc(100% - #{$padding-medium} * 2);
         width: calc(100% - #{$padding-medium} * 2);
