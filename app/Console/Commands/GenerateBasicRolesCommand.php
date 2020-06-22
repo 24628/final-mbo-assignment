@@ -66,22 +66,29 @@ class GenerateBasicRolesCommand extends Command
 
         $role = new Role;
         $role->id = 3;
-        $role->role_name = 'Werk zoekende';
+        $role->role_name = 'Werkzoekende';
         $role->color = '#a0a867';
         $role->selectable = true;
         $role->permissions = json_encode([
-            Permissions::__READ_CV__,
-            Permissions::__WRITE_CV__
+            Permissions::__READ_USER__,
+            Permissions::__WRITE_USER__,
+            Permissions::__WRITE_PROFILE__,
+            Permissions::__READ_PROFILE__,
+            Permissions::__READ_MAP__
         ]);
         $role->save();
 
         $role = new Role;
         $role->id = 4;
-        $role->role_name = 'Stand houder';
+        $role->role_name = 'Standhouder';
         $role->color = '#a0a867';
         $role->selectable = true;
         $role->permissions = json_encode([
-            Permissions::__READ_CV__
+            Permissions::__READ_USER__,
+            Permissions::__WRITE_USER__,
+            Permissions::__WRITE_PROFILE__,
+            Permissions::__READ_PROFILE__,
+            Permissions::__READ_MAP__
         ]);
         $role->save();
     }
