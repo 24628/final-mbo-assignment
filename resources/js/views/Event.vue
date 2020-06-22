@@ -22,6 +22,7 @@
                         >
                             <h1
                                 class="event-titlebar-title"
+                                v-bind:title="data.name"
                                 v-text="data.name"
                             />
                         </div>
