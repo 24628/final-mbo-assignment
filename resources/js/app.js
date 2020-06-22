@@ -37,8 +37,8 @@ const formatDate = (hasTime, date_start, date_end = null)=>{
         let formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
         if (hasTime){
             formattedDate += " ";
-            let hours = date.getUTCHours() + "";
-            let minutes = date.getUTCMinutes() + "";
+            let hours = date.getHours() + "";
+            let minutes = date.getMinutes() + "";
             if (hours.length === 1){
                 hours = "0" + hours;
             }
