@@ -383,7 +383,7 @@ export default {
             let data = {};
             const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company'];
             const roleData = {
-                id: this.role,
+                id: this.role_id,
                 user_id: this.user_id
             };
             pObj.forEach((i) => {
