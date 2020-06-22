@@ -57,6 +57,7 @@
 <script>
 import API from '../../Api';
 import axios from 'axios';
+import Api from '../../Api';
 
 export default {
     data () {
@@ -77,6 +78,7 @@ export default {
                     API.setToken(this.$user.data.data.api_token);
                     API.startInterval();
                     this.$emit('loggedIn', response.request.response);
+                    Api.generateHtml('successfully logged in');
                     this.$emit('close');
                 } else {
                     API.generateHtml(response.data.message);

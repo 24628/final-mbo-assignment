@@ -140,6 +140,7 @@ export default {
                 await API.errorCheck(e);
             }
             localStorage.setItem('user', JSON.stringify(response.data));
+            localStorage.setItem('loggedIn', JSON.stringify(true));
             location.reload(true);
             this.$emit('loggedIn', response.data);
             window.location.href = window.location.origin;
