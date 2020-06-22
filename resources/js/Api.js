@@ -69,7 +69,7 @@ export default class API {
             break;
         case 403:
             error = res.data.message;
-            window.location.href = window.location.origin;
+            window.location.href = window.location.origin + '/logout';
             break;
         case 404:
             error = 'Not found';

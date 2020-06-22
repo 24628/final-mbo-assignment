@@ -12,7 +12,7 @@
         />
         <div class="main">
             <transition name="fade">
-                <router-view />
+                <router-view @logout="logOut()" />
             </transition>
         </div>
     </div>

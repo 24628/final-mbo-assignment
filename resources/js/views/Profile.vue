@@ -74,16 +74,16 @@
                                 class="profile-name-edit"
                             >
                         </div>
-                        <hr v-if="!edit && role_name === 'Werk zoekende'" class="profile-line-phone">
+                        <hr v-if="!edit " class="profile-line-phone">
                         <input
-                            v-if="edit"
+                            v-if="edit && role_name === 'Werkzoekende'"
                             ref="cv"
                             type="file"
                             name="cv"
                             class="profile-cv-input"
                             @change="CvChangeEventHandler"
                         >
-                        <button v-if="!edit && !!cvString && cvString.length" class="download-cv" @click.prevent="showCV">
+                        <button v-if="!edit && !!cvString && cvString.length && role_name === 'Werkzoekende'" class="download-cv" @click.prevent="showCV">
                             bekijk CV
                         </button>
                     </div>

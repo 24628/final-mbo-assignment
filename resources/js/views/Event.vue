@@ -554,16 +554,9 @@ export default {
             return this.$formatDate(false, settings.date_start, settings.date_end);
         },
         getTime (dateObj) {
-            const date = new Date(dateObj);
-            let hours = date.getHours().toString();
-            let minutes = date.getMinutes().toString();
-            if (hours.length === 1) {
-                hours = '0' + hours;
-            }
-            if (minutes.length === 1) {
-                minutes = '0' + minutes;
-            }
-            return hours + ':' + minutes;
+            let arr = dateObj.split(" ");
+            let out = arr[arr.length-1];
+            return out;
         },
         setSpeaker (index, speaker, time, isKeynote = false) {
             speaker = JSON.parse(JSON.stringify(speaker));
