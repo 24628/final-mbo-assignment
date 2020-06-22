@@ -53,6 +53,11 @@ Vue.prototype.$formatDate = formatDate;
 
 Route.beforeEach((to, from, next) => {
     const loginData = JSON.parse(localStorage.getItem('user'));
+    const show = JSON.parse(localStorage.getItem('loggedIn'));
+    if (show) {
+        Api.generateHtml('successfully registered in');
+        localStorage.removeItem('loggedIn');
+    }
     if (loginData !== null) {
         user.data = loginData;
         Api.setToken(loginData.api_token);

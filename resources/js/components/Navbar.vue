@@ -9,8 +9,8 @@
                     Regristreer
                 </div>
                 <div v-if="loggedIn" class="navbar-user">
-                    Welkom
-                    <span class="navbar-user-name">{{ $user.data.name }}</span>!
+                    {{"Welkom &nbsp;"}}
+                    <p class="navbar-user-name">{{$user.data.name }}</p>!
                 </div>
                 <img class="navbar-logo" src="/img/nz-logo-light.png">
                 <button class="navbar-hamburger" @click="sidebarIsOpen = true">
