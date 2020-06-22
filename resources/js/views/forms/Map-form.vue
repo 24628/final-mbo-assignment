@@ -33,6 +33,7 @@
                 >
                 <hr>
                 <div v-if="selectedItem.id">
+                    <p>{{selectedItem.id}}</p>
                     <label for="item_width">Zet Item Breedte in meters</label>
                     <input
                         id="item_width"
@@ -61,7 +62,7 @@
                         koppel gebruiker aan stand
                     </div>
                     <div @click="toggleStandAvailableSettings(selectedItem.id)">
-                        Zet een stand op bezet of niet bezet
+                        Stand bezet [ {{selectedItem.available}} ]
                     </div>
                 </div>
             </div>
@@ -85,6 +86,7 @@
         />
 
         <pair-stand-with-user
+            :id="selectedItem.id"
             v-show="pairStandModel"
             @close="setModalState(`pairStandModel`)"
         />
@@ -186,10 +188,22 @@ export default {
             window.addEventListener('update-background-color', this.updateItemBackgroundColor, false);
             window.addEventListener('keydown', this.startCopyPasteState, false);
             window.addEventListener('set-copied-item', this.setSelectedItem, false);
+            window.addEventListener('pair-user', this.pairUser, false);
 
             const container = this.$refs.mapHolder;
             container.style.minWidth = this.map.width + 'px';
             container.style.minHeight = this.map.height + 'px';
+        },
+        pairUser(event){
+            console.log(event);
+            const stand_id = event.detail.stand_id;
+            const user_id = event.detail.user_id;
+            this.items.forEach((obj, index) => {
+                if(stand_id === obj.id) {
+                    this.items[index].available = true;
+                    this.items[index].user_id = user_id;
+                }
+            });
         },
         toggleStandAvailableSettings(id){
             this.items.forEach((obj, index) => {
@@ -464,11 +478,13 @@ export default {
         this.updateItemBackgroundColor = this.updateItemBackgroundColor.bind(this);
         this.startCopyPasteState = this.startCopyPasteState.bind(this);
         this.setSelectedItem = this.setSelectedItem.bind(this);
+        this.pairUser = this.pairUser.bind(this);
         this.init();
         this.fillMapIfNeeded();
     },
     beforeDestroy () {
         this.clearCopyState();
+        window.addEventListener('pair-user', this.pairUser, false);
         window.removeEventListener('delete-item', this.deleteItemFromArray, false);
         window.removeEventListener('update-background-color', this.updateItemBackgroundColor, false);
         window.removeEventListener('keydown', this.startCopyPasteState, false);

@@ -70,7 +70,7 @@
                                 <div class="admin-find-user-table-cell">
                                     Rol
                                 </div>
-                                <div class="admin-find-user-table-cell-actions" />
+                                <div class="admin-find-user-table-cell-actions"/>
                             </div>
                             <div
                                 v-for="user in users"
@@ -127,6 +127,7 @@
             };
         },
         name: 'PairStandWithUser',
+        props: ['id'],
         methods: {
             close () {
                 this.$emit('close');
@@ -141,8 +142,14 @@
 
                 e.preventDefault();
             },
-            pairUser(id){
-                console.log(id);
+            pairUser (id) {
+                window.dispatchEvent(new CustomEvent('pair-user', {
+                    detail: {
+                        user_id: id,
+                        stand_id: this.id
+                    },
+                }));
+                this.close();
             },
         },
     };

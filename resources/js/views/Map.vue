@@ -64,13 +64,15 @@ export default {
             container.appendChild(item);
         },
         showModal (id) {
-            if (!this.allowedIn) return;
-            this.mapItemModal = this.mapData.items.filter(i => i.id === id)[0];
-            if (this.mapItemModal.user_id !== null) {
-                alert('deze stand is bezet');
-                return;
+            if (this.allowedIn) {
+                this.mapItemModal = this.mapData.items.filter(i => i.id === id)[0];
+                if (this.mapItemModal.available === true) {
+                    alert('deze stand is bezet');
+                } else {
+                    this.setModalState('mapModal');
+                }
             }
-            this.setModalState('mapModal');
+            console.log('test');
         },
         setModalState (state) {
             this[state] = !this[state];
