@@ -460,10 +460,10 @@ div.profile-container {
     .profile-save-padding {
         padding-bottom: 30px;
     }
-    .profile-edit a span, .profile-about-title {
-        visibility: hidden;
-        display: none;
-    }
+    // .profile-edit a span, .profile-about-title {
+    //     visibility: hidden;
+    //     display: none;
+    // }
     .profile-save {
         z-index: 1;
         position: absolute;
@@ -579,11 +579,6 @@ div.profile-container {
         font-weight: bold;
         margin-bottom: 5px;
     }
-    .profile-company-name {
-        font-size: 20px;
-        font-weight: bold;
-        margin-top: 5px;
-    }
     .download-cv {
         background: $mid-gray;
         display: inline-block;
@@ -686,10 +681,10 @@ div.profile-container {
     .profile-save-padding {
         padding-bottom: 30px;
     }
-    .profile-edit a span, .profile-about-title {
-        visibility: hidden;
-        display: none;
-    }
+    // .profile-edit a span, .profile-about-title {
+    //     visibility: hidden;
+    //     display: none;
+    // }
     .profile-save {
         z-index: 1;
         position: absolute;
@@ -784,6 +779,11 @@ div.profile-container {
     }
     .profile-company {
         font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .profile-company {
+        font-size: 22px;
         font-weight: bold;
         margin-bottom: 5px;
     }

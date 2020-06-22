@@ -55,7 +55,7 @@
                                 {{ userrole.role_name }}
                             </option>
                         </select>
-                        <div v-if="!!company && !edit">
+                        <div v-if="!!company && !edit && role_name !== 'Werkzoekende'">
                             <p class="profile-company">
                                 Bedrijf
                             </p>
@@ -63,7 +63,7 @@
                                 {{ company }}
                             </p>
                         </div>
-                        <div v-if="!!company_func && !edit">
+                        <div v-if="!!company_func && !edit && role_name !== 'Werkzoekende'">
                             <p class="profile-function">
                                 Functie
                             </p>
@@ -71,7 +71,7 @@
                                 {{ company_func }}
                             </p>
                         </div>
-                        <div v-if="edit">
+                        <div v-if="edit && role_name !== 'Werkzoekende'">
                             <label class="profile-company" for="company">
                                 Bedrijf
                             </label>
