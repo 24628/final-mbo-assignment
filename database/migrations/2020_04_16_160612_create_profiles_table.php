@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->integer('user_id');
             $table->text('about')->nullable();
             $table->text('company')->nullable();
+            $table->text('comp_function')->nullable();
             $table->text('facebook')->nullable();
             $table->text('linkedin')->nullable();
             $table->text('contact_email')->nullable();
