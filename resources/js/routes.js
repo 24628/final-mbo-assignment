@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '@/js/views/Home';
+import Logout from '@/js/views/Logout';
 import Event from '@/js/views/Event';
 import Search from '@/js/views/Search';
 import Profile from '@/js/views/Profile';
@@ -28,6 +29,10 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
+        },{
+            path: '/logout',
+            name: 'logout',
+            component: Logout
         },
         {
             path: '/event/:id',
