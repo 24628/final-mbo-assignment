@@ -85,7 +85,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($request->user_id);
 
-        if (!in_array($request->id, Role::query()->where("selectable", true)->get(["id"])->toArray())) {
+        if (Role::query()->where("selectable", true)->where('id', $request->id)->first() == null) {
             abort(403);
         }
 
