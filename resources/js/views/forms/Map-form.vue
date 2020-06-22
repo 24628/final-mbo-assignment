@@ -57,6 +57,9 @@
                         :value="selectedItem.url"
                         @change="updateItemUrl($event, selectedItem.id)"
                     >
+                    <div @click="addUserToStand(selectedItem.id)">
+                        koppel gebruiker aan stand
+                    </div>
                 </div>
             </div>
             <button class="button-create-item map-settings-container-items" @click="storeMap">
@@ -176,6 +179,9 @@ export default {
             const container = this.$refs.mapHolder;
             container.style.minWidth = this.map.width + 'px';
             container.style.minHeight = this.map.height + 'px';
+        },
+        addUserToStand(id){
+          console.log(id);
         },
         updateMapWidth (event) {
             let width = event.target.value;

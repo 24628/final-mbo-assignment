@@ -35,16 +35,8 @@
                     <slot v-if="item !== null" name="body">
                         <h1>test</h1>
 
-                        {{ item.url }}
                         <div @click="openUrl">
                             De stand ticket
-                        </div>
-                        <p>Wilt u zich inschrijven voor deze stand?</p>
-                        <div @click="subscribe(true)">
-                            Ja
-                        </div>
-                        <div @click="subscribe(false)">
-                            Nee
                         </div>
                     </slot>
                 </section>
@@ -84,10 +76,6 @@ export default {
             if (win) win.focus();
             else alert('Please allow popups for this website');
         },
-        subscribe (boolean) {
-            window.dispatchEvent(new CustomEvent('subscribe-boolean', { detail: boolean }));
-            this.close();
-        }
     },
     watch: {
         item: async function (newVal, oldVal) {

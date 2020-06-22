@@ -38,7 +38,6 @@ export default {
                     _this.showModal(e.currentTarget.id);
                 });
             window.addEventListener('show-modal', this.showModal, false);
-            window.addEventListener('subscribe-boolean', this.subscribe, false);
         },
         createNewDomElement (counter, backgroundColorCodeItem, width, height, parentOffsetX, parentOffsetY) {
             const item = create({
@@ -75,28 +74,10 @@ export default {
         },
         setModalState (state) {
             this[state] = !this[state];
-        },
-        async subscribe (event) {
-            if (event.detail === false) return;
-            const user = JSON.parse(localStorage.getItem('user'));
-            this.mapItemModal.user_id = user.id;
-            this.mapData.items.forEach((el) => {
-                if (el.id === this.mapItemModal.id) {
-                    el.user_id = user.id;
-                }
-            });
-
-            const res = await API.post(
-                { map_data: JSON.stringify(this.mapData) },
-                '/api/event/map/subscribe/' + this.event_id,
-                true
-            );
-            console.log(res);
         }
     },
     async mounted () {
         this.showModal = this.showModal.bind(this);
-        this.subscribe = this.subscribe.bind(this);
 
         const res = await API.get('/api/event/map/' + this.event_id);
         const data = res.data;
@@ -128,7 +109,6 @@ export default {
     },
     beforeDestroy () {
         window.removeEventListener('show-modal', this.showModal, false);
-        window.removeEventListener('subscribe-boolean', this.subscribe, false);
     }
 };
 </script>
