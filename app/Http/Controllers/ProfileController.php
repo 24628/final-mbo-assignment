@@ -216,4 +216,22 @@ class ProfileController extends Controller
 
         return response()->json($rE, 200);
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function visitProfile($id){
+        $this->authorize('read', Profile::class);
+
+        $user = User::query()
+            ->select('name', 'email','id')
+            ->where('id', $id)
+            ->with('profile')
+            ->with('role:role_name')
+            ->pluck('name', 'email')
+            ->first();
+        return response()->json($user, 200);
+    }
 }
