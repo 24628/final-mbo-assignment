@@ -33,7 +33,6 @@
                     class="admin-modal-body"
                 >
                     <slot name="body">
-
                         <form
                             class="form admin-form-find-user"
                             method="post"
@@ -70,7 +69,7 @@
                                 <div class="admin-find-user-table-cell">
                                     Rol
                                 </div>
-                                <div class="admin-find-user-table-cell-actions"/>
+                                <div class="admin-find-user-table-cell-actions" />
                             </div>
                             <div
                                 v-for="user in users"
@@ -118,39 +117,39 @@
 </template>
 
 <script>
-    import API from '../../Api';
+import API from '../../Api';
 
-    export default {
-        data () {
-            return {
-                users: [],
+export default {
+    data () {
+        return {
+            users: []
+        };
+    },
+    name: 'PairStandWithUser',
+    props: ['id'],
+    methods: {
+        close () {
+            this.$emit('close');
+        },
+        async checkForm (e) {
+            const data = {
+                search: this.search
             };
-        },
-        name: 'PairStandWithUser',
-        props: ['id'],
-        methods: {
-            close () {
-                this.$emit('close');
-            },
-            async checkForm (e) {
-                const data = {
-                    search: this.search
-                };
 
-                const response = await API.post(data, '/api/admin/search');
-                this.users = response.data.message;
+            const response = await API.post(data, '/api/admin/search');
+            this.users = response.data.message;
 
-                e.preventDefault();
-            },
-            pairUser (id) {
-                window.dispatchEvent(new CustomEvent('pair-user', {
-                    detail: {
-                        user_id: id,
-                        stand_id: this.id
-                    },
-                }));
-                this.close();
-            },
+            e.preventDefault();
         },
-    };
+        pairUser (id) {
+            window.dispatchEvent(new CustomEvent('pair-user', {
+                detail: {
+                    user_id: id,
+                    stand_id: this.id
+                }
+            }));
+            this.close();
+        }
+    }
+};
 </script>

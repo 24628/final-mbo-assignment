@@ -50,7 +50,7 @@
                         <select v-else v-model="role_id" class="form-text-input">
                             <option
                                 v-for="userrole in roles"
-                                v-bind:value="userrole.id"
+                                :value="userrole.id"
                             >
                                 {{ userrole.role_name }}
                             </option>

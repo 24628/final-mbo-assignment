@@ -17,7 +17,7 @@
                         >
                             <div class="admin-block-date-holder" :class="{'open' : block.open}" @click="block.open = !block.open">
                                 <div class="admin-block-list-date">
-                                    {{ block.date_start.slice(5) }} / {{ block.date_end.slice(5) }}
+                                    {{ block.date_start }} /<br> {{ block.date_end }}
                                 </div>
                                 <div
                                     class="admin-block-action"

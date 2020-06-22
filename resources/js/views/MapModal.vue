@@ -75,7 +75,7 @@ export default {
             const win = window.open(url, '_blank');
             if (win) win.focus();
             else alert('Please allow popups for this website');
-        },
+        }
     },
     watch: {
         item: async function (newVal, oldVal) {

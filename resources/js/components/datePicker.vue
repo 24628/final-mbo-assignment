@@ -137,6 +137,7 @@ export default {
             this.date.current.month = chosenDate.getMonth();
             this.date.current.year = chosenDate.getFullYear();
             this.time = chosenDate.getHours() * 12 + chosenDate.getMinutes() - 12;
+            this.updateValue();
         } else {
             this.date.current.day = this.date.today.getDate();
             this.date.current.month = this.date.today.getMonth();
@@ -147,12 +148,21 @@ export default {
     },
     methods: {
         updateValue () {
-            this.value = this.date.current.year + '-' + (this.date.current.month + 1) + '-' + this.date.current.day + ' ' + this.getTimeString(this.time);
+            const date = new Date(0);
+            date.setFullYear(this.date.current.year, this.date.current.month, this.date.current.day);
+            date.setMonth(this.date.current.month);
+            date.setDate(this.date.current.day);
+            date.setHours(this.getHours(this.time));
+            date.setMinutes(this.getMinutes(this.time));
+            this.value = this.$formatDate(true, date);
+            console.log('----');
+            console.log(this.value);
+            console.log('----');
             this.$emit('update', this.value);
         },
         getTimeString (time) {
-            const hours = Math.floor(time / 12);
-            const minutes = (time % 12) * 5;
+            const hours = this.getHours(time);
+            const minutes = this.getMinutes(time);
 
             let hourString = hours + '';
             if (hourString.length === 1) {
@@ -164,6 +174,12 @@ export default {
                 minuteString = '0' + minuteString;
             }
             return hourString + ':' + minuteString;
+        },
+        getHours (time) {
+            return Math.floor(time / 12);
+        },
+        getMinutes (time) {
+            return (time % 12) * 5;
         },
         next () {
             this.date.current.year = (this.date.current.month === 11) ? this.date.current.year + 1 : this.date.current.year;
