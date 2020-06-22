@@ -57,8 +57,11 @@
                         :value="selectedItem.url"
                         @change="updateItemUrl($event, selectedItem.id)"
                     >
-                    <div @click="addUserToStand(selectedItem.id)">
+                    <div @click="setModalState('pairStandModel')">
                         koppel gebruiker aan stand
+                    </div>
+                    <div @click="toggleStandAvailableSettings(selectedItem.id)">
+                        Zet een stand op bezet of niet bezet
                     </div>
                 </div>
             </div>
@@ -80,6 +83,11 @@
             v-show="modalMapForm"
             @close="setModalState(`modalMapForm`)"
         />
+
+        <pair-stand-with-user
+            v-show="pairStandModel"
+            @close="setModalState(`pairStandModel`)"
+        />
     </div>
 </template>
 
@@ -88,12 +96,14 @@ import interact from 'interactjs';
 import create from 'dom-create-element';
 import API from '../../Api';
 import ModalMapForm from './ModalMapForm';
+import PairStandWithUser from './PairStandWithUser';
 
 const meterToPixel = 50;
 
 export default {
     components: {
-        ModalMapForm
+        ModalMapForm,
+        PairStandWithUser,
     },
     data () {
         return {
@@ -110,6 +120,7 @@ export default {
             timeoutUndo: undefined,
             modalMapForm: false,
             mapExist: false,
+            pairStandModel: false,
             mapId: null
         };
     },
@@ -180,8 +191,13 @@ export default {
             container.style.minWidth = this.map.width + 'px';
             container.style.minHeight = this.map.height + 'px';
         },
-        addUserToStand(id){
-          console.log(id);
+        toggleStandAvailableSettings(id){
+            this.items.forEach((obj, index) => {
+                if(id === obj.id) {
+                    this.items[index].available = !this.items[index].available;
+                    console.log(obj.available);
+                }
+            });
         },
         updateMapWidth (event) {
             let width = event.target.value;
@@ -380,6 +396,7 @@ export default {
             this.counter++;
             return {
                 id: `stand-id-${this.counter}`,
+                available: false,
                 user_id: null,
                 url: null,
                 style: {
