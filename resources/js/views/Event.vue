@@ -409,8 +409,11 @@
                     class="event-modal column-desktop-4 column-tablet-5 column-mobile-12"
                 >
                     <template v-if="subscribed || updating">
-                        <div class="event-modal-text">
-                            Je hebt je al ingeschreven voor dit evenement, je kan alsnog je selectie bijwerken of uitschrijven van het evenement
+                        <div
+                            class="event-modal-text"
+                            @click="router.replace('/profile')"
+                        >
+                            klik hier om uw ticket op uw profiel te bekijken
                         </div>
                         <button class="event-modal-signup-button" :disabled="!!updating" @click="updateEvent">
                             bijwerken
@@ -584,6 +587,7 @@ export default {
     },
     data () {
         return {
+            router: this.$router,
             updating: 0,
             data: null,
             eventId: null,
