@@ -87,7 +87,7 @@
                 </div>
                 <div class="form-line">
                     <input id="terms" v-model="terms" type="checkbox">
-                    <label class="form-label" for="terms">Algemene voorwaarden</label>
+                    <label class="form-label" for="terms">Accepteer de <a href="/pdf/algemene_voorwaarden.pdf" >algemene voorwaarden</a></label>
                 </div>
                 <div class="form-line form-line-hasbutton">
                     <input

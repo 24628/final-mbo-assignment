@@ -36,6 +36,12 @@
         font-size: $font-size-normal;
         padding-bottom: $padding-tiny;
     }
+    .form-label a{
+        color: $mid-gray;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: $font-size-normal;
+    }
 
     .form-color-input {
         padding: 0;

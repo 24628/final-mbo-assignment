@@ -38,7 +38,7 @@ export default {
     methods: {
         formatDate (settings) {
             const dateStart = new Date(settings.date_start).getTime();
-            const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'october', 'november', 'december'];
+            const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
             return stringifyDate(dateStart);
 
             function stringifyDate (date) {
