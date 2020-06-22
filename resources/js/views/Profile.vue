@@ -63,6 +63,14 @@
                                 {{ company }}
                             </p>
                         </div>
+                        <div v-if="!!company_func && !edit">
+                            <p class="profile-function">
+                                Functie
+                            </p>
+                            <p class="profile-company-name">
+                                {{ company_func }}
+                            </p>
+                        </div>
                         <div v-if="edit">
                             <label class="profile-company" for="company">
                                 Bedrijf
@@ -70,6 +78,15 @@
                             <input
                                 id="company"
                                 v-model="company"
+                                type="text"
+                                class="profile-name-edit"
+                            >
+                            <label class="profile-function" for="company_func">
+                                Functie
+                            </label>
+                            <input
+                                id="company-func"
+                                v-model="company_func"
                                 type="text"
                                 class="profile-name-edit"
                             >
@@ -273,7 +290,8 @@ export default {
             user_id: null,
             profileExist: false,
             profileId: null,
-            registerEvents: []
+            registerEvents: [],
+            company_func: null,
         };
     },
     async mounted () {
