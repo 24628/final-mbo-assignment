@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Http\Requests\UpdateUserNameRequest;
+use App\Map;
 use App\Permissions;
 use App\RegistrationEvents;
 use App\Role;
@@ -85,8 +86,14 @@ class UserController extends Controller
 
         $user = User::findOrFail($request->user_id);
 
-        if (Role::query()->where("selectable", true)->where('id', $request->id)->first() == null) {
-            abort(403);
+        if (Role::query()
+                ->where("selectable", true)
+                ->where('id', $request->id)
+                ->first() == null
+        ) {
+            if($user->role_id !== $request->user_id){
+                abort(403);
+            }
         }
 
         $user->role_id = $request->id;
@@ -154,5 +161,15 @@ class UserController extends Controller
             ->first();
 
         return response()->json($q, 200);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function viewMap(){
+
+        $user = User::findOrFail(Auth::id());
+
+        return response()->json($user->role->role_name, 200);
     }
 }

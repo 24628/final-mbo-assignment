@@ -22,6 +22,7 @@ class Profile extends Model
         'twitter',
         'company',
         'cv',
+        'comp_function',
     ];
 
     protected $hidden = [

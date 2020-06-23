@@ -23,6 +23,7 @@ Route::get('/event-overview', 'OverviewController@event')->name('event');
 Route::get('/event/map/{event}', 'OverviewController@map')->name('event.map');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 Route::get('/event/tickets/{id}', 'EventController@tickets');
+Route::get('/profile/visit/{id}', 'ProfileController@visitProfile');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('/print/badge/{id}', 'UserController@print');
@@ -115,6 +116,8 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('/block', 'BlockController@store');
     Route::patch('/block/{block}', 'BlockController@update');
     Route::delete('/block/{block}', 'BlockController@destroy');
+
+    Route::get('/view/map', 'UserController@viewMap');
 });
 
 

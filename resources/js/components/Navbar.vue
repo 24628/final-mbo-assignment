@@ -6,7 +6,7 @@
                     v-if="!loggedIn"
                     class="button-register"
                     @click="router.replace('/user-registration')">
-                    Regristreer
+                    Registreer
                 </div>
                 <div v-if="loggedIn" class="navbar-user">
                     {{"Welkom &nbsp;"}}

@@ -84,6 +84,7 @@
                             class="event-titlebar-part-holder contains-btn column-desktop-4 column-tablet-12 column-mobile-12"
                         >
                             <button
+                                v-if="viewMapName == 'Standhouder'"
                                 class="event-titlebar-btn"
                                 @click="viewMap()"
                             >
@@ -149,7 +150,7 @@
                 >
                     <b
                         class="event-congress-title column-desktop-12 column-tablet-12 column-mobile-12"
-                    >Congress</b>
+                    >Congres</b>
                     <p
                         class="event-congress-description column-desktop-4 column-tablet-4 column-mobile-4"
                     >
@@ -477,6 +478,11 @@ export default {
         const r = await API.get('/api/event/tickets/' + this.eventId);
         const data = r.data;
         this.currentTickets = data;
+
+        if (this.$user.data.id) {
+            const rp = await API.get('/api/view/map');
+            this.viewMapName = rp.data;
+        }
     },
     methods: {
         async updateEvent () {
@@ -594,7 +600,8 @@ export default {
             subscribed: false,
             selectedSpeakers: [],
             selectedKeyNotes: [],
-            currentTickets: null
+            currentTickets: null,
+            viewMapName: false,
         };
     }
 };
