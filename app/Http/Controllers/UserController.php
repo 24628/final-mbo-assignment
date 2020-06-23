@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Http\Requests\UpdateUserNameRequest;
+use App\Map;
 use App\Permissions;
 use App\RegistrationEvents;
 use App\Role;
@@ -160,5 +161,15 @@ class UserController extends Controller
             ->first();
 
         return response()->json($q, 200);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function viewMap(){
+
+        $user = User::findOrFail(Auth::id());
+
+        return response()->json($user->role->role_name, 200);
     }
 }
