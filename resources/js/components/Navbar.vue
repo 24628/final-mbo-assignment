@@ -36,7 +36,7 @@
                 <router-link to="/" exact>
                     Home
                 </router-link>
-                <router-link v-if="loggedIn" to="/Profile">
+                <router-link v-if="loggedIn" to="/My-Profile">
                     Profiel
                 </router-link>
                 <div class="sidenav-link-divider" />
@@ -49,9 +49,9 @@
                 <button v-else @click="logout">
                     Uitloggen
                 </button>
-                <!--                <router-link v-if="loggedIn" to="/search">-->
-                <!--                    Profiel zoeken-->
-                <!--                </router-link>-->
+                <router-link v-if="loggedIn" to="/search">
+                    Profiel zoeken
+                </router-link>
             </div>
         </div>
     </div>
