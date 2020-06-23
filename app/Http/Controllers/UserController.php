@@ -169,7 +169,7 @@ class UserController extends Controller
     public function viewMap(){
 
         $user = User::findOrFail(Auth::id());
-        $user = $user->makeHidden(['api_toke']);
+        $user = $user->makeHidden(['api_token']);
 
         return response()->json($user->role->role_name, 200);
     }
