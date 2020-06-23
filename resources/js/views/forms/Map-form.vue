@@ -196,12 +196,12 @@ export default {
         },
         pairUser (event) {
             console.log(event);
-            const stand_id = event.detail.stand_id;
-            const user_id = event.detail.user_id;
+            const standId = event.detail.stand_id;
+            const userId = event.detail.user_id;
             this.items.forEach((obj, index) => {
-                if (stand_id === obj.id) {
+                if (standId === obj.id) {
                     this.items[index].available = true;
-                    this.items[index].user_id = user_id;
+                    this.items[index].user_id = userId;
                 }
             });
         },

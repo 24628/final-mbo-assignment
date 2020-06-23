@@ -563,8 +563,8 @@ export default {
             return this.$formatDate(false, settings.date_start, settings.date_end);
         },
         getTime (dateObj) {
-            let arr = dateObj.split(" ");
-            let out = arr[arr.length-1];
+            const arr = dateObj.split(' ');
+            const out = arr[arr.length - 1];
             return out;
         },
         setSpeaker (index, speaker, time, isKeynote = false) {
@@ -601,7 +601,7 @@ export default {
             selectedSpeakers: [],
             selectedKeyNotes: [],
             currentTickets: null,
-            viewMapName: false,
+            viewMapName: false
         };
     }
 };

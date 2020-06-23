@@ -21,9 +21,9 @@ user.install = function () {
 Vue.use(user);
 
 // Global date Format fucntion
-const formatDate = (hasTime, date_start, date_end = null) => {
-    const dateStart = new Date(date_start).getTime();
-    const dateEnd = new Date(date_end).getTime();
+const formatDate = (hasTime, dateStartString, dateEndString = null) => {
+    const dateStart = new Date(dateStartString).getTime();
+    const dateEnd = new Date(dateEndString).getTime();
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     if (dateEnd !== null && dateStart + 1000 * 60 * 60 * 24 > dateEnd) {
         return stringifyDate(dateStart);

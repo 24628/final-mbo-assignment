@@ -3,28 +3,14 @@
         <div class="flex-wrapper">
             <h1>Evenementen</h1>
         </div>
-
         <div class="flex-wrapper homepage-inner">
             <div class="home-events flex-grid">
-                <div
-                    v-for="item in data"
-                    :key="item.id"
-                    class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12"
-                >
-                    <div
-                        class="home-event"
-                        @click="$router.push('event/' + item.id)"
-                    >
-                        <div
-                            class="home-event-background"
-                            :style="{backgroundColor: item.settings.color, backgroundImage: 'url(' + item.image + ')'}"
-                        />
+                <div v-for="item in data" :key="item.id" class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12">
+                    <div class="home-event" @click="$router.push('event/' + item.id)">
+                        <div class="home-event-background" :style="{backgroundColor: item.settings.color, backgroundImage: 'url(' + item.image + ')'}" />
                         <div class="home-event-content">
                             <h2>{{ item.name }}</h2>
-                            <hr
-                                class="home-divider"
-                                :style="{borderColor: item.settings.color}"
-                            >
+                            <hr class="home-divider" :style="{borderColor: item.settings.color}">
                             <p class="home-description">
                                 {{ item.description }}
                             </p>
@@ -51,6 +37,7 @@
 import API from '@/js/Api';
 
 export default ({
+    name: 'Home',
     async mounted () {
         const response = await API.get('/api/event-overview');
         this.data = response.data;
