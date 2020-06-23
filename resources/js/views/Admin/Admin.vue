@@ -349,6 +349,8 @@ export default {
             await this.forceUpdate();
         },
         async forceUpdate () {
+            const r = await API.get('/api/admin/sub/1');
+            console.error(r.data);
             const _this = this;
             await setTimeout(async () => {
                 const data = await API.get('/api/admin');
