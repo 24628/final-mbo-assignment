@@ -5,7 +5,7 @@
   padding: 0 !important;
   overflow: hidden;
   @media (max-width: $mobile-breakpoint) {
-    height: 50vh;
+    height: unset;
     min-height: min-content;
   }
 
@@ -17,6 +17,9 @@
     display: block;
     overflow-y: scroll;
     padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
+    @media (max-width: $mobile-breakpoint) {
+      position: relative;
+    }
   }
 
   .event-program {
