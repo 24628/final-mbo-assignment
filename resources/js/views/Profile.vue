@@ -219,7 +219,7 @@
                                 >
                             </div>
                             <div>
-                                <a v-if="!edit && phonenumber || edit" :href="phonenumber">
+                                <a v-if="!edit && phone_number || edit" :href="phone_number">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
@@ -231,7 +231,7 @@
                                 </a>
                                 <input
                                     v-if="edit"
-                                    v-model="phonenumber"
+                                    v-model="phone_number"
                                     type="text"
                                     class="contact-input"
                                     placeholder="+31 6 1234567"
@@ -264,7 +264,7 @@ export default {
             facebook: null,
             twitter: null,
             linkedin: null,
-            phonenumber: null,
+            phone_number: null,
             contact_email: null,
             edit: false,
             cvString: null,
@@ -297,7 +297,7 @@ export default {
             this.facebook = data.profile.facebook;
             this.twitter = data.profile.twitter;
             this.linkedin = data.profile.linkedin;
-            this.phonenumber = data.profile.phonenumber;
+            this.phone_number = data.profile.phone_number;
             this.contact_email = data.profile.contact_email;
             this.company = data.profile.company;
             this.comp_function = data.profile.comp_function;
@@ -382,7 +382,7 @@ export default {
         },
         async editProfile () {
             let data = {};
-            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email', 'company', 'comp_function'];
+            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phone_number', 'contact_email', 'company', 'comp_function'];
             const roleData = {
                 id: this.role_id,
                 user_id: this.user_id
@@ -393,6 +393,7 @@ export default {
                 tmp[i] = this[i];
                 data = window._.merge(data, tmp);
             });
+            console.log(data);
             if (this.profileExist) {
                 await API.post(data, '/api/profile/' + this.profileId, true);
             } else {

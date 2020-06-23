@@ -33,7 +33,7 @@ class ProfileValidationRequest extends FormRequest
             'facebook' => ['string', new UrlValidator],
             'twitter' => ['string', new UrlValidator],
             'linkedin' => ['string', new UrlValidator],
-            'phonenumber' => ['string', new PhoneNumberValidator],
+            'phone_number' => ['string', new PhoneNumberValidator],
             'contact_email' => ['string', 'email', 'max:255'],
         ];
     }
