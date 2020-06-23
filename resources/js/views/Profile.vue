@@ -63,10 +63,6 @@
                                 {{ company }}
                             </p>
                         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> f317c77f6da36197da83931f66902fb6cb73c330
                         <div v-if="!!comp_function && !edit && role_name !== 'Werkzoekende'">
                             <p class="profile-function">
                                 Functie
