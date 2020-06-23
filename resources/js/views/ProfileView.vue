@@ -1,22 +1,20 @@
 <template>
-    <div class="profile-container">
-        <div class="flex-wrapper profile-top">
-            <h1>{{'NAME'}}'s profiel</h1>
+    <div class="profile-container" v-if="!!data">
+        <div class="flex-wrapper profile-top" >
+            <h1>{{data.name}}'s profiel</h1>
         </div>
         <div class="form-profile-edit">
             <div class="mobile-wrapper flex-grid column-desktop-full column-tablet-12">
                 <div class="column-desktop-4 column-tablet-12 column-mobile-12 profile-border profile-main-wrapper">
-                    <div class="profile-foto" :style="!!image ? {backgroundImage: 'url('+'bgurl'+')'} : ''"/>
+                    <div class="profile-foto" :style="(!!data.profile && !!data.profile.image)? {backgroundImage: 'url('+data.profile.image+')'} : ''"/>
                     <div class="profile-main">
                         <p class="profile-name">
-                            {{'NAME'}}
+                            {{data.name}}
                         </p>
                         <p class="profile-role">
-                            {{role_name}}
+                            {{data.role.role_name}}
                         </p>
-                        <template>
-
-                        </template>
+                        <template v-if="!!data.profile">
                         <div v-if="!!company && role_name !== 'Werkzoekende'">
                             <p class="profile-company">
                                 Bedrijf
@@ -25,7 +23,7 @@
                                 {{company}}
                             </p>
                         </div>
-                        <div v-if="!!comp_function && role_name !== 'Werkzoekende'">
+                        <div v-if="!!data.profile && !!data.profile.comp_function && role_name !== 'Werkzoekende'">
                             <p class="profile-function">
                                 Functie
                             </p>
@@ -34,20 +32,21 @@
                             </p>
                         </div>
                         <hr class="profile-line-phone">
-                        <button v-if="!!cvString && cvString.length && role_name === 'Werkzoekende'" class="download-cv"
+                        <button v-if="!!data && !!data.profile && !!data.profile.cv && data.profile.cv.length > 0 && data.role.role_name === 'Werkzoekende'" class="download-cv"
                                 @click.prevent="showCV">
                             bekijk CV
                         </button>
+                        </template>
                     </div>
                 </div>
-                <div class="column-desktop-8 column-tablet-12 column-mobile-12 profile-about-mobile profile-row-right">
+                <div class="column-desktop-8 column-tablet-12 column-mobile-12 profile-about-mobile profile-row-right" v-if="!!data.profile">
                     <div class="profile-border profile-about">
                         <div class="profile-about-border">
                             <p class="profile-about-title">
                                 Vertel over jezelf
                             </p>
                             <p class="profile-about-description">
-                                {{'about'}}
+                                {{data.profile.about}}
                             </p>
                         </div>
                     </div>
@@ -55,9 +54,9 @@
                         <p class="contact-title">
                             Contact
                         </p>
-                        <div class="contact-logo" :class="{'contact-logo-edit' : edit}">
+                        <div class="contact-logo">
                             <div>
-                                <a v-if="!!linkedin && !!linkedin.length > 5" :href="linkedin" target="_blank">
+                                <a v-if="!!data.profile.linkedin && data.profile.linkedin.length > 5" :href="data.profile.linkedin" target="_blank">
                                     <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
@@ -69,7 +68,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a v-if="!!facebook && !!facebook.length > 5" :href="facebook">
+                                <a v-if="!!data.profile.facebook && data.profile.facebook.length > 5" :href="data.profile.facebook">
                                     <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
@@ -81,7 +80,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a v-if="!!twitter && !!twitter.length > 5"  :href="twitter">
+                                <a v-if="!!data.profile.twitter && data.profile.twitter.length > 5"  :href="data.profile.twitter">
                                     <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
@@ -93,7 +92,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a v-if="!!contact_email && !!contact_email.length > 5"  :href="contact_email">
+                                <a v-if="!!data.profile.contact_email && data.profile.contact_email.length > 5"  :href="'mailto:' + data.profile.contact_email">
                                     <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
@@ -105,7 +104,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a v-if="!!phonenumber && !!phonenumber.length > 5"  :href="phonenumber">
+                                <a v-if="!!data.profile.phone_number && data.profile.phone_number.length > 5"  :href="'tel:' + data.profile.phone_number">
                                     <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
@@ -121,6 +120,7 @@
                 </div>
             </div>
         </div>
+        <div ref="cvHolder" class="cv-holder" @click="emptyCV" />
     </div>
 </template>
 
@@ -133,14 +133,42 @@
         name: 'Profile',
         data() {
             return {
+                data: null,
                 company: 'COMPANY',
                 company_function: 'COMPANY-FUNCTION',
                 role_name: 'Werkzoekende',
             }
         },
+        methods: {
+            showCV () {
+                let numPages = 0;
+                const _this = this;
+                const typedArray = Uint8Array.from(atob(this.data.profile.cv), c => c.charCodeAt(0));
+                PDFJS.getDocument(typedArray).then(function (pdf) {
+                    numPages = pdf.numPages;
+                    for (let i = 0; i <= numPages; i++) {
+                        pdf.getPage(i).then(handlePages);
+                    }
+                });
+
+                const handlePages = function (page) {
+                    const viewport = page.getViewport(1);
+                    const canvas = document.createElement('canvas');
+                    canvas.style.display = 'block';
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    page.render({ canvasContext: context, viewport: viewport });
+                    _this.$refs.cvHolder.appendChild(canvas);
+                };
+            },
+            emptyCV () {
+                this.$refs.cvHolder.innerHTML = '';
+            },
+        },
         async mounted() {
             const res = await API.get('/api/profile/visit/' + this.$route.params.id);
-            console.log(res);
+            this.data = res.data;
         },
     };
 
