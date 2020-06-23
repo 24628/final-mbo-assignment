@@ -223,15 +223,13 @@ class ProfileController extends Controller
      * @throws AuthorizationException
      */
     public function visitProfile($id){
-        $this->authorize('read', Profile::class);
 
         $user = User::query()
-            ->select('name', 'email','id')
             ->where('id', $id)
             ->with('profile')
-            ->with('role:role_name')
-            ->pluck('name', 'email')
+            ->with('role:id,role_name')
             ->first();
+
         return response()->json($user, 200);
     }
 }
