@@ -151,6 +151,15 @@ class ProfileController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
+            $profile = Profile::query()->where('user_id', Auth::id())->first();
+            $profile->user_id = Auth::id();
+            $profile->cv = $request->cv;
+            $profile->update();
+
+            return response()->json(['message' => 'CV updated successfully'], 200);
+        }
+
         $profile = new Profile;
         $profile->user_id = Auth::id();
         $profile->cv = $request->cv;
