@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Aanpassen ronde
+                            Aantal bezoekers per item
                         </p>
 
                         <button
@@ -33,7 +33,12 @@
                     class="admin-modal-body"
                 >
                     <slot name="body">
-                        <h1>test</h1>
+                        <div v-for="item in data" style="color: white;padding: 1em">
+
+                            name: {{item.item.name}}</br>
+                            amount: {{item.amount}}
+                        </div>
+
                     </slot>
                 </section>
                 <footer class="admin-modal-footer">
@@ -59,6 +64,7 @@
     export default {
         data () {
             return {
+                data: [],
             };
         },
         name: 'ShowModalSubsPerItem',
@@ -69,6 +75,7 @@
             },
             update (data) {
                 console.log(data);
+                this.data = data.data;
             }
         },
         watch: {
