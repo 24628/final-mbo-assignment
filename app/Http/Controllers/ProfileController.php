@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
 use App\Http\Requests\ProfileValidationRequest;
 use App\Profile;
 use App\RegistrationEvents;
 use App\User;
 use App\Rules\Base64Validator;
-use App\Rules\HtmlValidator;
-use App\Rules\PhoneNumberValidator;
-use App\Rules\UrlValidator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -149,6 +145,15 @@ class ProfileController extends Controller
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
+        }
+
+        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
+            $profile = Profile::query()->where('user_id', Auth::id())->first();
+            $profile->user_id = Auth::id();
+            $profile->cv = $request->cv;
+            $profile->update();
+
+            return response()->json(['message' => 'CV updated successfully'], 200);
         }
 
         $profile = new Profile;
