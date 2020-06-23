@@ -15,7 +15,7 @@
                         {{ $user.data.name }}
                     </p>!
                 </div>
-                <img class="navbar-logo" src="/img/nz-logo-light.png">
+                <img class="navbar-logo" src="/img/nz-logo-light.png" @click="router.replace('/')">
                 <button class="navbar-hamburger" @click="sidebarIsOpen = true">
                     <div>
                         <div />

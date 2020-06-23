@@ -19,7 +19,7 @@ class Permissions extends Model {
 
     public const __ADMIN__ = 'Admin';
     public const __NOTIFY_USER__ = 'notify_users';
-    public const __ADMIN_UPDATE_USER__ = 'notify_users';
+    public const __ADMIN_UPDATE_USER__ = 'admin_update_user';
 
     public const __READ_ROLE__ = 'read_role';
     public const __WRITE_ROLE__ = 'write_role';
