@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Inschrijven voor stand
+                            Stand reseveren
                         </p>
 
                         <button
@@ -33,10 +33,8 @@
                     class="admin-modal-body"
                 >
                     <slot v-if="item !== null" name="body">
-                        <h1>test</h1>
-
                         <div @click="openUrl">
-                            De stand ticket
+                            De stand boeken
                         </div>
                     </slot>
                 </section>
