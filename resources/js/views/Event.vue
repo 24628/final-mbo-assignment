@@ -149,7 +149,7 @@
                 >
                     <b
                         class="event-congress-title column-desktop-12 column-tablet-12 column-mobile-12"
-                    >Congress</b>
+                    >Congres</b>
                     <p
                         class="event-congress-description column-desktop-4 column-tablet-4 column-mobile-4"
                     >
