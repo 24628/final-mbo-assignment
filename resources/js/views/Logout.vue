@@ -8,7 +8,7 @@
 export default ({
     mounted () {
         this.$emit('logout');
-        this.$router.replace("/");
+        this.$router.replace('/');
     }
 });
 </script>
