@@ -223,8 +223,6 @@ class ProfileController extends Controller
      * @throws AuthorizationException
      */
     public function visitProfile($id){
-        $this->authorize('read', Profile::class);
-
         $user = User::query()
             ->select('name', 'email','id')
             ->where('id', $id)
