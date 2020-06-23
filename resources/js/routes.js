@@ -6,6 +6,7 @@ import Logout from '@/js/views/Logout';
 import Event from '@/js/views/Event';
 import Search from '@/js/views/Search';
 import Profile from '@/js/views/Profile';
+import ProfileView from '@/js/views/ProfileView';
 import EventForm from '@/js/views/forms/Event-form';
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
 import EventSettingsForm from '@/js/views/forms/Event-Settings-form';
@@ -40,20 +41,20 @@ const router = new VueRouter({
             component: Event
         },
         {
-            path: '/profile',
-            name: 'profile',
+            path: '/my-profile',
+            name: 'my-profile',
             component: Profile
         },
         {
             path: '/profile/:id',
             name: 'profile',
-            component: Profile
+            component: ProfileView
         },
-        // {
-        //     path: '/search',
-        //     name: 'search',
-        //     component: Search
-        // },
+        {
+            path: '/search',
+            name: 'search',
+            component: Search
+        },
         {
             path: '/form/event',
             name: 'event-form',
