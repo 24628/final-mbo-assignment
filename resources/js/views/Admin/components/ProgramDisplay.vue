@@ -76,7 +76,7 @@ import API from '../../../Api';
 
 export default {
     name: 'Program',
-    props: ['program', 'event-title'],
+    props: ['program', 'eventTitle'],
     components: {
         CreateProgramItemModal,
         UpdateProgramItemModal,

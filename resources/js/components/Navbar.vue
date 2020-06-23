@@ -5,12 +5,15 @@
                 <div
                     v-if="!loggedIn"
                     class="button-register"
-                    @click="router.replace('/user-registration')">
+                    @click="router.replace('/user-registration')"
+                >
                     Registreer
                 </div>
                 <div v-if="loggedIn" class="navbar-user">
-                    {{"Welkom &nbsp;"}}
-                    <p class="navbar-user-name">{{$user.data.name }}</p>!
+                    {{ "Welkom &nbsp;" }}
+                    <p class="navbar-user-name">
+                        {{ $user.data.name }}
+                    </p>!
                 </div>
                 <img class="navbar-logo" src="/img/nz-logo-light.png">
                 <button class="navbar-hamburger" @click="sidebarIsOpen = true">

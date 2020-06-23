@@ -29,7 +29,7 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
-        },{
+        }, {
             path: '/logout',
             name: 'logout',
             component: Logout
