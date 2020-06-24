@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
 use App\Http\Requests\ProfileValidationRequest;
 use App\Profile;
 use App\RegistrationEvents;
 use App\User;
 use App\Rules\Base64Validator;
-use App\Rules\HtmlValidator;
-use App\Rules\PhoneNumberValidator;
-use App\Rules\UrlValidator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

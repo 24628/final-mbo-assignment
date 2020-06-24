@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Block;
 use App\Congress;
 use App\Event;
 use App\EventSettings;
 use App\Http\Requests\UserUpdateValidationRequest;
+use App\Item;
 use App\Mail\NotifyUserOfEventsMail;
 use App\Program;
 use App\RegistrationEvents;
@@ -17,6 +19,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use stdClass;
@@ -73,11 +76,12 @@ class AdminController extends Controller
      * @return JsonResponse|string
      * @throws AuthorizationException
      */
-    public function excel(Request $request){
+    public function excel(Request $request)
+    {
 
         $this->authorize('write', User::class);
 
-        $data = [ 'data' => $request->all() ];
+        $data = ['data' => $request->all()];
 
         $validator = Validator::make($data, [
             'data.*.name' => ['required', 'string'],
@@ -92,11 +96,11 @@ class AdminController extends Controller
 
         $error = new stdClass();
         $error->role = null;
-        foreach ($data["data"] as $obj){
+        foreach ($data["data"] as $obj) {
 
             $role = Role::query()->where('role_name', $obj["role"])->first();
 
-            if($role == null) {
+            if ($role == null) {
                 $error->role = 'De rol bestaat niet, de rol: ' . $obj["role"];
                 return response()->json($error, 422);
             }
@@ -145,7 +149,8 @@ class AdminController extends Controller
      * @throws AuthorizationException
      * @throws Exception
      */
-    public function deleteUser(User $user){
+    public function deleteUser(User $user)
+    {
         $this->authorize('write', User::class);
 
         $user->delete();
@@ -158,7 +163,8 @@ class AdminController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function user(User $user){
+    public function user(User $user)
+    {
         $this->authorize('write', User::class);
 
         $user->makeVisible(['role_id']);
@@ -171,7 +177,8 @@ class AdminController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function program($id){
+    public function program($id)
+    {
 
         $this->authorize('read', Program::class);
 
@@ -189,7 +196,8 @@ class AdminController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function congress($id){
+    public function congress($id)
+    {
 
         $this->authorize('read', Congress::class);
 
@@ -208,7 +216,8 @@ class AdminController extends Controller
      * @return JsonResponse
      * @throws Exception
      */
-    public function forceNotify(){
+    public function forceNotify()
+    {
 
         $this->authorize('notify', User::class);
 
@@ -252,7 +261,8 @@ class AdminController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function updateUser(UserUpdateValidationRequest $request, User $user){
+    public function updateUser(UserUpdateValidationRequest $request, User $user)
+    {
 
         $this->authorize('AdminUser', User::class);
 
@@ -261,5 +271,52 @@ class AdminController extends Controller
 
         return response()->json(['message' => 'User updated successfully'], 200);
 
+    }
+
+
+    public function getSubPerItems(Event $event)
+    {
+
+        $es = RegistrationEvents::query()
+            ->where('event_id', $event->id)
+            ->get();
+
+        $c = Congress::query()
+            ->where('event_id', $event->id)
+            ->first();
+
+        $b = Block::query()
+            ->where('congress_id', $c->id)
+            ->get();
+
+        $allItemsOnEvent = [];
+        foreach ($b as $block) {
+            $items = Item::query()
+                ->where('block_id', $block->id)
+                ->get();
+            foreach ($items as $i) {
+                $obj = [];
+                $obj['item'] = $i->id;
+                $obj['amount'] = 0;
+                array_push($allItemsOnEvent, $obj);
+            }
+        }
+
+        foreach ($es as $s) {
+            foreach (json_decode($s->item_ids, true) as $item) {
+                foreach ($allItemsOnEvent as $key => $z) {
+                    if ($z['item'] == $item) {
+                        $allItemsOnEvent[$key]['amount']++;
+                    }
+                }
+            }
+        }
+
+        foreach ($allItemsOnEvent as $key => $z) {
+            $item = Item::query()->where('id', $z['item'])->first();
+            $allItemsOnEvent[$key]['item'] = $item;
+        }
+
+        return response()->json($allItemsOnEvent, 200);
     }
 }
