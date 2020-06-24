@@ -187,7 +187,7 @@
                                         "
                                     >
                                         <i class="fas fa-plus-circle" />
-                                        Aantal bezoekers per item
+                                        Aantal bezoekers per spreker
                                     </div>
                                 </div>
                             </div>
