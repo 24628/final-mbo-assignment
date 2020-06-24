@@ -414,9 +414,9 @@
                     <template v-if="subscribed || updating">
                         <div
                                 class="event-modal-text"
-                                @click="router.replace('/profile')"
+
                         >
-                            klik hier om uw ticket op uw profiel te bekijken
+                            U bent ingescreven. Vergeet niet <button @click="router.push('/My-Profile')">hier</button> je profiel in te vullen.
                         </div>
                         <button class="event-modal-signup-button" :disabled="!!updating" @click="updateEvent">
                             bijwerken
@@ -635,5 +635,16 @@
 <style>
     .event-padding-right-big {
         padding-right: 45px !important;
+    }
+    .event-modal-text button{
+        display: inline-block;
+        padding: 0;
+        background: 0;
+        cursor: pointer;
+        border: none;
+        margin: 0;
+        font-size: inherit;
+        color: inherit;
+        text-decoration: underline !important;
     }
 </style>
