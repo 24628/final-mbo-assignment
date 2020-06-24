@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Aantal bezoekers per item
+                            Aantal bezoekers per spreker
                         </p>
 
                         <button
@@ -35,7 +35,7 @@
                     <slot name="body">
                         <div v-for="item in data" style="color: white;padding: 1em">
 
-                            name: {{item.item.name}}</br>
+                            name: {{item.item.name}}<br/>
                             amount: {{item.amount}}
                         </div>
 
