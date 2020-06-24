@@ -416,7 +416,7 @@
                                 class="event-modal-text"
 
                         >
-                            U bent ingescreven. Vergeet niet <button @click="router.push('/My-Profile')">hier</button> je profiel in te vullen.
+                            U bent ingeschreven. Vergeet niet <button @click="router.push('/My-Profile')">hier</button> je profiel in te vullen.
                         </div>
                         <button class="event-modal-signup-button" :disabled="!!updating" @click="updateEvent">
                             bijwerken
