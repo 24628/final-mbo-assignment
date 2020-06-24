@@ -114,7 +114,7 @@
           a {
             display: block;
             text-decoration: none;
-            color: $theme-color;
+            color: var(--theme-color);
             cursor: pointer;
           }
         }

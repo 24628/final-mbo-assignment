@@ -64,7 +64,11 @@ $light-gray: #E7E7E7;
       }
     }
   }
-
+  .event-congress-round-speaker-position{
+    > a{
+      color: $almost-white !important;
+    }
+  }
   .event-my_speakers {
     background-color: $light-gray;
 
