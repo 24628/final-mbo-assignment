@@ -117,7 +117,7 @@ export default {
         text-align: center;
     }
     .badge-background{
-        background-color:#c3d111;
+        background-color:white;
         width: 608px;
         height: 880px;
     }
