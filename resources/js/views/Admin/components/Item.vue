@@ -7,6 +7,7 @@
             type="text"
             name="name"
             placeholder="Naam"
+            readonly
         >
 
         <div class="form-line">
@@ -17,6 +18,7 @@
                 type="text"
                 name="description"
                 placeholder="Omschrijving"
+                readonly
             />
         </div>
     </div>
