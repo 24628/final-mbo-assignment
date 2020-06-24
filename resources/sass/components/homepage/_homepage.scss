@@ -73,6 +73,14 @@ body {
     transform $animation-time ease-in-out,
     box-shadow $animation-time ease-in-out;
 
+    @media (max-width: $mobile-breakpoint) {
+      margin-left: 0;
+      margin-right: 0;
+      h2{
+        font-size: $font-size-big !important;
+      }
+    }
+
     &:hover {
       background-color: lighten($deep-gray, 6%);
       transform: scale(1.05);

@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "../../sass/variables";
+    @import "@/sass/_variables";
 
     .search {
         background: $dark-gray;

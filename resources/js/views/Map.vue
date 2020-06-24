@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p v-if="!hasModal" class="no-map-text">Op het moment is er geen plattegrond ingevoerd. Probeer het op een later moment opnieuw. <br><br><a @click="goBack" href="#">Klik hier om terug te gaan</a></p>
         <div ref="mapHolder" class="map-holder" />
 
         <map-modal
@@ -23,6 +24,7 @@ export default {
     name: 'Map',
     data () {
         return {
+            hasModal: false,
             allowedIn: true,
             event_id: this.$route.params.event_id,
             mapData: null,
@@ -31,6 +33,10 @@ export default {
         };
     },
     methods: {
+        goBack(e){
+            e.preventDefault;
+            this.$router.go(-1)
+        },
         init () {
             const _this = this;
             interact('.draggable')
@@ -82,6 +88,9 @@ export default {
 
         const res = await API.get('/api/event/map/' + this.event_id);
         const data = res.data;
+        if (data === {}){
+            this.hasModal = true;
+        }
 
         const mapData = JSON.parse(data.json);
         this.mapData = mapData;
@@ -113,3 +122,21 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+    @import "@/sass/_variables";
+    .no-map-text{
+        position: absolute;
+        max-width: 600px;
+        width: calc(100vw - 64px);
+        left: 50%;
+        top: 50%;
+        font-size: 24px;
+        color: white;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        a{
+            color: $theme-color;
+        }
+    }
+</style>

@@ -110,6 +110,13 @@
         .event-congress-round-speaker-position {
           display: block;
           color: $basic-gray;
+          span{ display: block }
+          a {
+            display: block;
+            text-decoration: none;
+            color: $theme-color;
+            cursor: pointer;
+          }
         }
       }
 
