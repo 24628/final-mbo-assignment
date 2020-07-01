@@ -50,10 +50,12 @@ export default {
         }
     },
     created () {
+        if (!(location.hostname === "localhost" || location.hostname === "127.0.0.1") && window.location.protocol !== 'https:') window.location.protocol = 'https:';
         if (localStorage.getItem('user') !== null) {
             this.loggedIn = true;
             this.$user.data = JSON.parse(localStorage.getItem('user'));
         }
+
     },
     components: { Modal, NavBar }
 };
