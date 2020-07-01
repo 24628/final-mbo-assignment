@@ -319,4 +319,10 @@ class AdminController extends Controller
 
         return response()->json($allItemsOnEvent, 200);
     }
+
+    public function getSubPerEvent(Event $event){
+
+
+
+    }
 }

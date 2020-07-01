@@ -183,6 +183,18 @@
                                     <div
                                         class="admin-sidebar-program-create-button"
                                         @click="
+                                            showAmountPerEvent(event.id)
+                                        "
+                                    >
+                                        <i class="fas fa-plus-circle" />
+                                        Aantal bezoekers
+                                    </div>
+                                </div>
+
+                                <div class="admin-create-program-sidebar">
+                                    <div
+                                        class="admin-sidebar-program-create-button"
+                                        @click="
                                             showAmountPerItems(event.id)
                                         "
                                     >
@@ -284,6 +296,12 @@
             :id="selectedEventId"
             @close="setModalState(`showModalSubsPerItem`)"
         />
+
+        <show-modal-subs-event
+            v-show="showModalSubsEvent"
+            :id="selectedEventId"
+            @close="setModalState(`showModalSubsEvent`)"
+        />
     </div>
 </template>
 
@@ -303,6 +321,7 @@ import UpdateEventSettingsModal from './components/modal/Update/UpdateEventSetti
 import UpdateProgramModal from './components/modal/Update/UpdateProgramModal';
 import UpdateCongressModal from './components/modal/Update/UpdateCongressModal';
 import ShowModalSubsPerItem from './components/modal/ShowModalSubsPerItem';
+import ShowModalSubsEvent from './components/modal/ShowModalSubsEvent'
 
 export default {
     name: 'Admin',
@@ -325,6 +344,7 @@ export default {
             updateProgramModal: false,
             updateCongressModal: false,
             showModalSubsPerItem: false,
+            showModalSubsEvent: false,
             updateProgramId: null,
             settingsId: null,
             updateSettingsId: null,
@@ -346,7 +366,8 @@ export default {
         UpdateEventSettingsModal,
         UpdateProgramModal,
         UpdateCongressModal,
-        ShowModalSubsPerItem
+        ShowModalSubsPerItem,
+        ShowModalSubsEvent,
     },
     methods: {
         async setSelectedEventId (id) {
@@ -420,6 +441,10 @@ export default {
                 this.updateSettingsId = event.settings.id;
                 this.setModalState('updateEventSettingsModal');
             }
+        },
+        showAmountPerEvent(id){
+            this.selectedEventId = id;
+            this.setModalState('showModalSubsEvent');
         },
         showAmountPerItems(id){
             this.selectedEventId = id;

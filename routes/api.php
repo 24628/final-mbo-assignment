@@ -97,6 +97,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::patch('/admin/update/user/{user}', 'AdminController@updateUser');
     Route::delete('/admin/user/{user}', 'AdminController@deleteUser');
     Route::get('/admin/sub/{event}', 'AdminController@getSubPerItems');
+    Route::get('/admin/sub/event/{event}', 'AdminController@getSubPerEvent');
 
     Route::get('/program-item/{id}', 'ProgramItemsController@show')->name('program.item.show');
     Route::post('/program-item', 'ProgramItemsController@store')->name('program.item.store');
