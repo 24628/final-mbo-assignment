@@ -4,9 +4,9 @@
 
 
 ## Steps to set up
+* copy the env.example and setup the env variables to connect to database
 * composer update
 * composer install
-* copy the env.example and setup the env variables to connect to database
 * npm install && npm run dev
 * then do php artisan serve
 
