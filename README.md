@@ -4,12 +4,10 @@
 
 
 ## Steps to set up
+* composer update
 * composer install
-* npm install && npm run dev
 * copy the env.example and setup the env variables to connect to database
-* php artisan migrate !!! SET THE DATABASE STUFF IN THE .ENV
-* php artisan roles:generate
-* roles:admin !!! SET THE ADMIN USER IN THE .ENV
+* npm install && npm run dev
 * then do php artisan serve
 
 ## use full commands
